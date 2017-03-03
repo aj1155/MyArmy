@@ -1,5 +1,8 @@
 spring.application.name: myarmy
 
+dashboard.url: http://127.0.0.1
+
+
 spring.jpa:
   database: MYSQL
   showSql: true
@@ -36,4 +39,3 @@ spring.h2.console:
 
 ---
 spring.profiles: local-test
-
