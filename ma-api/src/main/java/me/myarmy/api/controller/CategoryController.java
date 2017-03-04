@@ -21,9 +21,31 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    /***** 지역별 *****/
     @GetMapping("/area/{area}")
     public MaApiResponse<List<Object>> disArea(@PathVariable String area){
         List<Object> list = this.categoryService.area(area);
+        return new MaApiResponse<>(list);
+    }
+
+    /***** 학력 *****/
+    @GetMapping("/grade/{grade}")
+    public MaApiResponse<List<Object>> disGrade(@PathVariable String grade){
+        List<Object> list = this.categoryService.grade(grade);
+        return new MaApiResponse<>(list);
+    }
+
+    /***** 경력 *****/
+    @GetMapping("/experience/{experience}")
+    public MaApiResponse<List<Object>> disExp(@PathVariable String experience){
+        List<Object> list = this.categoryService.experience(experience);
+        return new MaApiResponse<>(list);
+    }
+
+    /***** 복지 *****/
+    @GetMapping("/welfare/{welfare}")
+    public MaApiResponse<List<Object>> disWelfare(@PathVariable String welfare){
+        List<Object> list = this.categoryService.welfare(welfare);
         return new MaApiResponse<>(list);
     }
 }

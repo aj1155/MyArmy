@@ -21,8 +21,24 @@ public class CategoryService {
     private DataFrame rootDataFrame;
 
     /***** 지역별 *****/
-    public List<Object> area(String area){
-        Column geunmujy = rootDataFrame.col("geunmujy");
-        return Arrays.asList(rootDataFrame.filter(geunmujy.contains(area)).toJSON().collect());
+    public List<Object> area(String area) {
+        Column geunmujy = this.rootDataFrame.col("geunmujy");
+        return Arrays.asList(this.rootDataFrame.filter(geunmujy.contains(area)).toJSON().collect());
     }
+    /***** 학력 *****/
+    public List<Object> grade(String grade){
+        Column cjhakryeok = this.rootDataFrame.col("cjhakryeok");
+        return Arrays.asList(this.rootDataFrame.filter(cjhakryeok.equalTo(grade)).toJSON().collect());
+    }
+    /***** 경력 *****/
+    public List<Object> experience(String experience){
+        Column gyeongryeokGbcdNm = this.rootDataFrame.col("gyeongryeokGbcdNm");
+        return Arrays.asList(this.rootDataFrame.filter(gyeongryeokGbcdNm.contains(experience)).toJSON().collect());
+    }
+    /***** 복지 *****/
+    public List<Object> welfare(String welfare){
+        Column bokrihs = this.rootDataFrame.col("bokrihs");
+        return Arrays.asList(this.rootDataFrame.filter(bokrihs.contains(welfare)).toJSON().collect());
+    }
+
 }
