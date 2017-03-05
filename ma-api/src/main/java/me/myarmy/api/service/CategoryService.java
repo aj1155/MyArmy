@@ -41,4 +41,10 @@ public class CategoryService {
         return Arrays.asList(this.rootDataFrame.filter(bokrihs.contains(welfare)).toJSON().collect());
     }
 
+    /***** 직종별 *****/
+    public List<Object> occupation(String occupation){
+        Column eopjongGbcdNm = this.rootDataFrame.col("eopjongGbcdNm");
+        return Arrays.asList(this.rootDataFrame.filter(eopjongGbcdNm.contains(occupation)).toJSON().collect());
+    }
+
 }

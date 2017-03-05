@@ -48,4 +48,12 @@ public class CategoryController {
         List<Object> list = this.categoryService.welfare(welfare);
         return new MaApiResponse<>(list);
     }
+
+    /***** 직종 *****/
+    @GetMapping("/occupation/{occupation}")
+    public MaApiResponse<List<Object>> disOccupation(@PathVariable String occupation){
+        List<Object> list = this.categoryService.occupation(occupation);
+        return new MaApiResponse<>(list);
+    }
+
 }
