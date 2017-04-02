@@ -17,6 +17,7 @@ import java.util.List;
 @Slf4j
 public class CategoryService {
 
+    /* xml 정보 */
     @Autowired
     private DataFrame rootDataFrame;
 
