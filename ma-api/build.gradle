@@ -63,6 +63,10 @@ dependencies {
 	/* boot 서버 설정 */
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
+
+	/* security */
+	compile('org.springframework.boot:spring-boot-starter-security')
+
 	compile("joda-time:joda-time")
 	compile("org.jadira.usertype:usertype.jodatime:2.0.1")
 	compile("com.google.guava:guava:20.0")

@@ -1,8 +1,10 @@
 package me.myarmy.api.domain;
 
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Manki Kim on 2017-04-01.
@@ -15,7 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Role {
+public class Role implements Serializable,GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,4 +33,8 @@ public class Role {
                 .build();
     }
 
+    @Override
+    public String getAuthority() {
+        return this.role;
+    }
 }
