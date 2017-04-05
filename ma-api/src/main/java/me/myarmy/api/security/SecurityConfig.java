@@ -1,7 +1,8 @@
 package me.myarmy.api.security;
 
 import me.myarmy.api.controller.filter.CORSFilter;
-import me.myarmy.api.repository.UserRepository;
+import me.myarmy.api.controller.filter.StatelessAuthenticationFilter;
+import me.myarmy.api.controller.filter.StatelessLoginFilter;
 import me.myarmy.api.security.handler.SecurityFailureHandler;
 import me.myarmy.api.security.handler.SecurityLogoutSuccessHandler;
 import me.myarmy.api.security.handler.SecuritySuccessHandler;
@@ -9,6 +10,8 @@ import me.myarmy.api.service.custom.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -18,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
 
@@ -36,6 +40,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private SecurityFailureHandler securityFailureHandler;
     @Autowired
     private SecurityLogoutSuccessHandler securityLogoutSuccessHandler;
+    @Autowired
+    private TokenAuthenticationService tokenAuthenticationService;
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private CORSFilter corsFilter;
@@ -45,24 +53,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Filters will not get executed for the resources
         web.ignoring().antMatchers("/", "/resources/**", "/static/**", "/public/**", "/webui/**", "/h2-console/*"
                 , "/configuration/**", "/swagger-ui/**", "/swagger-resources/**", "/api-docs", "/api-docs/**", "/v2/api-docs/**"
-                , "/**/*.html" ,"/**/*.css","/**/*.js","/**/*.png","/**/*.jpg", "/**/*.gif", "/**/*.svg", "/**/*.ttf","/**/*.woff");
+                , "/**/*.html", "/**/*.css", "/**/*.js", "/**/*.png", "/**/*.jpg", "/**/*.gif", "/**/*.svg", "/**/*.ttf", "/**/*.woff");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .exceptionHandling().and()
-                .anonymous().and()
-                // Disable Cross site references
-                .csrf().disable()
-                // Add CORS Filter
-                .addFilterBefore(corsFilter, ChannelProcessingFilter.class)
-                // Custom Token based authentication based on the header previously given to the client
-                //.addFilterBefore(new VerifyTokenFilter(tokenUtil), UsernamePasswordAuthenticationFilter.class)
-                // custom JSON based authentication by POST of {"username":"<name>","password":"<password>"} which sets the token header upon authentication
-                //.addFilterBefore(new GenerateTokenForUserFilter ("/session", authenticationManager(), tokenUtil), UsernamePasswordAuthenticationFilter.class)
-                .authorizeRequests()
-                .anyRequest().authenticated();
+        http.csrf().disable();
+
+        //h2 database console
+        http.headers().frameOptions().disable();
+
+        http.exceptionHandling()
+                .and().anonymous()
+                .and().servletApi()
+                .and().headers().cacheControl();
+        http.authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/console/**").permitAll();
+        http.addFilterBefore(corsFilter, ChannelProcessingFilter.class);
+        http.addFilterBefore(
+                new StatelessLoginFilter("/api/login", this.tokenAuthenticationService,userService,authenticationManager()),
+                UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(
+                new StatelessAuthenticationFilter(this.tokenAuthenticationService),
+                UsernamePasswordAuthenticationFilter.class);
+
     }
 
 
@@ -74,12 +89,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    };
+    }
+
+    ;
 
     @Bean
     public SecurityContextRepository securityContextRepository() {
         return new HttpSessionSecurityContextRepository();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 }

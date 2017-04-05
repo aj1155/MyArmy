@@ -31,6 +31,7 @@ public class UserDetailsImpl implements UserDetails,CredentialsContainer {
         this.id=user.getId();//pk
         this.username=user.getUserName();
         this.password=user.getPassword();
+        this.email=user.getEmail();
         this.authorities=getAuthorities(user);
         this.accountNonExpired=true;
         this.accountNonLocked=true;
@@ -51,6 +52,7 @@ public class UserDetailsImpl implements UserDetails,CredentialsContainer {
         this.id=user.getId();//pk
         this.username=user.getUserName();
         this.password=user.getPassword();
+        this.email=user.getEmail();
         this.authorities=getAuthorities(user);
         this.accountNonExpired=true;
         this.accountNonLocked=true;
@@ -94,7 +96,7 @@ public class UserDetailsImpl implements UserDetails,CredentialsContainer {
 
     @Override
     public String getUsername() {
-        return username;
+        return this.email;
     }
 
     @Override
