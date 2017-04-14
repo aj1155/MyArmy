@@ -52,4 +52,4 @@ jwt.tokenheader: X-Auth-Token
 
 
 ---
-test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhajExNTVAbmF2ZXIuY29tIiwiZXhwIjoxNDkyMzIwNDgyfQ.mr6jvdeEHW7_mG8EBfQfNyI2aRIFVPXTTtQnnyUtTDPvCOjV0sxLGzelUnD45jQa0xHj9kCdmVg8_B9qrzNKcw
+test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhajExNTVAbmF2ZXIuY29tIiwiZXhwIjoxNDkyNzY3MTQxfQ.aQPUtGtFnDpmU2LYOFfFCvHNs7wetWZP3KwKUqc4sU57XCF8Yb-LZVCbeMziQJwyEWVaF23LaLLxfg_iT1zorw

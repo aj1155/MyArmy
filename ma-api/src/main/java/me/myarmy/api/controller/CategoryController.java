@@ -2,6 +2,8 @@ package me.myarmy.api.controller;
 
 import me.myarmy.api.controller.model.response.MaApiResponse;
 import me.myarmy.api.service.CategoryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +22,15 @@ import java.util.List;
 @RequestMapping("/api/v1/category")
 public class CategoryController {
 
+    private static Logger logger = LoggerFactory.getLogger(CategoryController.class);
+
     @Autowired
     private CategoryService categoryService;
 
     /***** 지역별 *****/
     @GetMapping("/area/{area}")
     public MaApiResponse<List<Object>> disArea(@PathVariable String area){
+
         List<Object> list = this.categoryService.area(area);
         return new MaApiResponse<>(list);
     }
