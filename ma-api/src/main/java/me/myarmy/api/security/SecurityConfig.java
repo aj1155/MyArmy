@@ -68,11 +68,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().servletApi()
                 .and().headers().cacheControl();
         http.authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/api/v1/category/**").hasRole("USER")
                 .antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER")
                 .antMatchers(HttpMethod.GET, "/console/**").permitAll();
         http.addFilterBefore(corsFilter, ChannelProcessingFilter.class);
         http.addFilterBefore(
-                new StatelessLoginFilter("/api/login", this.tokenAuthenticationService,userService,authenticationManager()),
+                new StatelessLoginFilter("/api/v1/login", this.tokenAuthenticationService,userService,authenticationManager()),
                 UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(
                 new StatelessAuthenticationFilter(this.tokenAuthenticationService),

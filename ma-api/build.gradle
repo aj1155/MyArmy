@@ -69,6 +69,9 @@ dependencies {
 
 	/* jwt */
 	compile('io.jsonwebtoken:jjwt:0.6.0')
+	
+	/* cache */
+	compile group: 'net.sf.ehcache', name: 'ehcache', version: '2.10.3'
 
 	compile("joda-time:joda-time")
 	compile("org.jadira.usertype:usertype.jodatime:2.0.1")

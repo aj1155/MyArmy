@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.util.UrlPathHelper;
 
@@ -39,6 +40,13 @@ public class WebConfig {
         characterEncodingFilter.setForceEncoding(true);
         return characterEncodingFilter;
     }
+
+    @Bean public ScheduledExecutorFactoryBean scheduledExecutorService() {
+        ScheduledExecutorFactoryBean scheduledExecutorFactoryBean = new ScheduledExecutorFactoryBean();
+        scheduledExecutorFactoryBean.setPoolSize(5);
+        return scheduledExecutorFactoryBean;
+    }
+
 
 
 }

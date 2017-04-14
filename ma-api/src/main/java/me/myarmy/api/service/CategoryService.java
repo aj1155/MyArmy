@@ -22,6 +22,7 @@ public class CategoryService {
     private DataFrame rootDataFrame;
 
     /***** 지역별 *****/
+    //@Cacheable(value="findJobListCache", key="#name")
     public List<Object> area(String area) {
         Column geunmujy = this.rootDataFrame.col("geunmujy");
         return Arrays.asList(this.rootDataFrame.filter(geunmujy.contains(area)).toJSON().collect());
