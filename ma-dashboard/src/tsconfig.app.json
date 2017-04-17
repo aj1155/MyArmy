@@ -5,6 +5,9 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "awesomeTypescriptLoaderOptions": {
+      "useWebpackText": true
+    },
     "lib": [
       "es2016",
       "dom"
