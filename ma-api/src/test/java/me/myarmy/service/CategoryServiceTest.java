@@ -29,7 +29,7 @@ public class CategoryServiceTest {
     @Test
     public void areaTest(){
          List<Object> result = this.categoryService.area("서울");
-        assertThat(result).isNotNull();
+         assertThat(result).isNotNull();
     }
 
     @Test
