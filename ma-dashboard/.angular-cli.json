@@ -5,15 +5,15 @@
   },
   "apps": [
     {
-      "root": "src/main-web",
+      "root": "src",
       "outDir": "dist",
       "assets": [
         "assets",
         "favicon.ico"
       ],
       "index": "views/index.html",
-      "main": "main-web/main.ts",
-      "polyfills": "main-web/polyfills.ts",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
