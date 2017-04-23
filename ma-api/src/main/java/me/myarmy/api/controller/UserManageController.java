@@ -19,6 +19,7 @@ public class UserManageController {
     @Autowired
     private UserService userService;
 
+
     @PostMapping()
     public MaApiResponse create(@Valid @RequestBody UserRequest userRequest){
         this.userService.createUser(userRequest);
