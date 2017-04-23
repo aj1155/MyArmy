@@ -81,7 +81,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-
+    /***
+     *
+     * api/v1/login
+     * post
+     * "emai" , "username" , "password"
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth

@@ -53,3 +53,15 @@ jwt.tokenheader: X-Auth-Token
 
 ---
 test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhajExNTVAbmF2ZXIuY29tIiwiZXhwIjoxNDkyNzY3MTQxfQ.aQPUtGtFnDpmU2LYOFfFCvHNs7wetWZP3KwKUqc4sU57XCF8Yb-LZVCbeMziQJwyEWVaF23LaLLxfg_iT1zorw
+
+---
+mail:
+  host: smtp.gmail.com
+  port: 587
+  protocol: smtp
+  default-encoding: UTF-8
+  username: win3winkr@gmail.com
+  password: dnlsdnls3#
+  smtp:
+    start-tls-enable: true
+    auth: true
