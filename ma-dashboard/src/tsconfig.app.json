@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "typeRoots": [ "../node_modules/@types" ],
     "awesomeTypescriptLoaderOptions": {
       "useWebpackText": true
     },
@@ -16,7 +17,7 @@
     "target": "es5",
     "module": "es2015",
     "baseUrl": "",
-    "types": []
+    "types": ["node"]
   },
   "exclude": [
     "test.ts",
