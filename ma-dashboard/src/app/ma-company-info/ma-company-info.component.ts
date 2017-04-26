@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MaCompanyInfoService } from './ma-company-info.service';
 
 @Component({
   selector: 'app-ma-company-info',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ma-company-info.component.css']
 })
 export class MaCompanyInfoComponent implements OnInit {
+  result: string
 
-  constructor() { }
+  constructor(private maCompanyInfoService: MaCompanyInfoService) { }
 
   ngOnInit() {
+    this.maCompanyInfoService.test().subscribe(data => {
+      console.log(data.result);
+      this.result = data.result;
+    })
   }
 
 }
