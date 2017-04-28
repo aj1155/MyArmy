@@ -47,12 +47,12 @@ spring.profiles: local-test
 ---
 ### jwt Settings ###
 jwt.secret: a1g2y47dg3dj59fjhhsd7cnewy73j
-jwt.expiration: 604800
+jwt.expiration: 6048000
 jwt.tokenheader: X-Auth-Token
 
 
 ---
-test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhajExNTVAbmF2ZXIuY29tIiwiZXhwIjoxNDkyNzY3MTQxfQ.aQPUtGtFnDpmU2LYOFfFCvHNs7wetWZP3KwKUqc4sU57XCF8Yb-LZVCbeMziQJwyEWVaF23LaLLxfg_iT1zorw
+test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhajExNTVAbmF2ZXIuY29tIiwiZXhwIjoxNDkzOTY3MzI3fQ.9S34Zb8cVGdR5ycMv7J9ZcU57WmIyQDgTfH_SggeY6UxpIcO_JnXZgQYoGiB2Nnrb3CXBi8m6JKEHnzqiaYOmA
 
 ---
 mail:
