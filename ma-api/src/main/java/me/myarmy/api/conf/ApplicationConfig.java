@@ -31,7 +31,8 @@ public class ApplicationConfig {
     public SparkConf sparkConf() {
         SparkConf sparkConf = new SparkConf()
                 .setAppName(appName)
-                .setMaster(masterUri);
+                .setMaster(masterUri)
+                .set("spark.driver.host", "localhost");
         return sparkConf;
     }
 
