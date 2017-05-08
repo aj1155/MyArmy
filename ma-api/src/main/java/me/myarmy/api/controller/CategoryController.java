@@ -71,4 +71,10 @@ public class CategoryController {
         return new MaApiResponse<>(list);
     }
 
+    @ApiOperation(value = "작성일", notes = "작성일 순서대로 회사 리스트를 가져옵니다.")
+    @GetMapping("/createdDate")
+    public MaApiResponse<List<Object>> disCreatedDate(){
+        List<Object> list = this.categoryService.createdDate();
+        return new MaApiResponse<>(list);
+    }
 }
