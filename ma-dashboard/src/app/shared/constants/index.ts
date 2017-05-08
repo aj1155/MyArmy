@@ -16,3 +16,4 @@ export const DEFAULT_DASHBOARD_API_URL = defaultDashboardApiUrl;  // URL to web 
 
 //
 export const COMPANY_INFO = DEFAULT_DASHBOARD_API_URL + 'test';
+export const FOOTER = DEFAULT_DASHBOARD_API_URL + 'footer';

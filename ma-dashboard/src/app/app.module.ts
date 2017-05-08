@@ -17,6 +17,7 @@ import { InMemoryOverrideMockDbService } from './shared/mock-data/in-memory-over
 import { RequestExceptionHandler } from './shared/handlers/requestExceptionHandler';
 import { RequestHandler } from './shared/handlers/requestHandler';
 import { MaCompanyInfoModule } from './ma-company-info/ma-company-info.module';
+import { MaFooterModule } from './ma-footer/ma-footer.module';
 
 
 
@@ -30,6 +31,7 @@ import { MaCompanyInfoModule } from './ma-company-info/ma-company-info.module';
     MaCompanyListComponent
   ],
   imports: [
+    // MaFooterModule,
     MaCompanyInfoModule,
     BrowserModule,
     FormsModule,
