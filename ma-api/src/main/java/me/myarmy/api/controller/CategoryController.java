@@ -8,10 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -75,6 +72,13 @@ public class CategoryController {
     @GetMapping("/createdDate")
     public MaApiResponse<List<Object>> disCreatedDate(){
         List<Object> list = this.categoryService.createdDate();
+        return new MaApiResponse<>(list);
+    }
+
+    @GetMapping("/smartMatch/{uid:.+}")
+    public MaApiResponse<List<Object>> disSmartMatch(@PathVariable String uid){
+        logger.info("uid : ", uid);
+        List<Object> list = this.categoryService.smartMatch(uid);
         return new MaApiResponse<>(list);
     }
 }
