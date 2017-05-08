@@ -1,5 +1,7 @@
 app.name : MyArmy
 
-master.uri : local
+#master.uri : local
+master.uri : local[2]
 
-input.file : C:\\Users\\USER\\Downloads\\dataArmy.xml
+#input.file : /usr/dataArmy.xml
+input.file : /users/gain/downloads/dataArmy.xml

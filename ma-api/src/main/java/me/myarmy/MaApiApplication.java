@@ -18,4 +18,6 @@ public class MaApiApplication extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(MaApiApplication.class);
 	}
+
+
 }

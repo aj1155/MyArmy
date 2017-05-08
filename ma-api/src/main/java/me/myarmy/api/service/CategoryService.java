@@ -54,4 +54,11 @@ public class CategoryService {
         return Arrays.asList(this.rootDataFrame.filter(eopjongGbcdNm.contains(occupation)).toJSON().collect());
     }
 
+    /***** 작성일 최신순 *****/
+    @Cacheable(value="findJopCreatedDateCache")
+    public List<Object> createdDate(){
+        Column ccdatabalsaengDtm = this.rootDataFrame.col("ccdatabalsaengDtm");
+        return Arrays.asList(this.rootDataFrame.sort(ccdatabalsaengDtm.desc()).toJSON().collect());
+    }
+
 }

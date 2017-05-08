@@ -42,6 +42,7 @@ public class MailServiceImpl implements MailService {
 
 
     private void sendMail(MailMessage message) {
+        System.out.println(message);
         try {
             log.debug(">> Send mailMessage: {}", message);
             doSend(message);
