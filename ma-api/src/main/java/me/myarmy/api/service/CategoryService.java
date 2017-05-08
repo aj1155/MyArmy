@@ -1,6 +1,8 @@
 package me.myarmy.api.service;
 
 import lombok.extern.slf4j.Slf4j;
+import me.myarmy.api.domain.Resume;
+import me.myarmy.api.repository.ResumeRepository;
 import org.apache.spark.sql.Column;
 import org.apache.spark.sql.DataFrame;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class CategoryService {
     /* xml 정보 */
     @Autowired
     private DataFrame rootDataFrame;
+
+    @Autowired
+    private ResumeRepository resumeRepository;
 
     /***** 지역별 *****/
     @Cacheable(value="findJobAreaCache", key="#area")
@@ -61,4 +66,17 @@ public class CategoryService {
         return Arrays.asList(this.rootDataFrame.sort(ccdatabalsaengDtm.desc()).toJSON().collect());
     }
 
+    /****스마트 매칭****/
+    public List<Object> smartMatch(String uid){
+        log.debug(uid);
+        Resume resume = this.resumeRepository.findByUid(uid);
+        log.debug(resume.getObjective());
+        log.debug(resume.getAddress());
+        Column cjhakryeok = this.rootDataFrame.col("cjhakryeok");
+        Column eopjongGbcdNm = this.rootDataFrame.col("eopjongGbcdNm");
+        Column geunmujy = this.rootDataFrame.col("geunmujy");
+
+
+        return Arrays.asList(this.rootDataFrame.filter(cjhakryeok.contains(resume.getGrade())).filter(eopjongGbcdNm.contains(resume.getObjective())).filter(geunmujy.contains(resume.getAddress())).toJSON().collect());
+    }
 }
