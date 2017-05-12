@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { RequestHandler } from '../shared/handlers/requestHandler';
-import { FOOTER } from '../shared/constants/index';
+import { REGIST } from '../shared/constants/index';
 
 @Injectable()
-export class MaFooterService {
+export class MaRegistService {
 
   constructor(private requestHandler:RequestHandler) { }
 
-  footer() {
-    console.log(FOOTER);
-    return this.requestHandler.get(FOOTER);
+  regist() {
+    console.log(REGIST);
+    return this.requestHandler.get(REGIST);
   }
-
 }

@@ -18,6 +18,9 @@ import { RequestExceptionHandler } from './shared/handlers/requestExceptionHandl
 import { RequestHandler } from './shared/handlers/requestHandler';
 import { MaCompanyInfoModule } from './ma-company-info/ma-company-info.module';
 import { MaFooterModule } from './ma-footer/ma-footer.module';
+import { MaRegistModule } from './ma-regist/ma-regist.module';
+import { MaPersonalRegistComponent } from './ma-personal-regist/ma-personal-regist.component';
+import { MaCompanyRegistComponent } from './ma-company-regist/ma-company-regist.component';
 
 
 
@@ -25,13 +28,14 @@ import { MaFooterModule } from './ma-footer/ma-footer.module';
   declarations: [
     AppComponent,
     MaHeaderComponent,
-    MaFooterComponent,
-    MaRegistComponent,
     MaTopicsComponent,
-    MaCompanyListComponent
+    MaCompanyListComponent,
+    MaPersonalRegistComponent,
+    MaCompanyRegistComponent
   ],
   imports: [
-    // MaFooterModule,
+    MaRegistModule,
+    MaFooterModule,
     MaCompanyInfoModule,
     BrowserModule,
     FormsModule,
