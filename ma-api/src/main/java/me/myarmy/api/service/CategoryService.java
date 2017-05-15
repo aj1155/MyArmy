@@ -27,36 +27,42 @@ public class CategoryService {
     @Autowired
     private ResumeRepository resumeRepository;
 
+    /***** 전체 *****/
+    @Cacheable(value="findJobAll", key="#all")
+    public List<Object> all(String all) {
+        return Arrays.asList(this.rootDataFrame.toJSON().collect());
+    }
+
     /***** 지역별 *****/
     @Cacheable(value="findJobAreaCache", key="#area")
     public List<Object> area(String area) {
         Column geunmujy = this.rootDataFrame.col("geunmujy");
-        return Arrays.asList(this.rootDataFrame.filter(geunmujy.contains(area)).toJSON().collect());
+        return Arrays.asList(this.rootDataFrame.filter(geunmujy.contains(area)).distinct().toJSON().collect());
     }
     /***** 학력 *****/
     @Cacheable(value="findJobGradeCache", key="#grade")
     public List<Object> grade(String grade){
         Column cjhakryeok = this.rootDataFrame.col("cjhakryeok");
-        return Arrays.asList(this.rootDataFrame.filter(cjhakryeok.equalTo(grade)).toJSON().collect());
+        return Arrays.asList(this.rootDataFrame.filter(cjhakryeok.equalTo(grade)).distinct().toJSON().collect());
     }
     /***** 경력 *****/
     @Cacheable(value="findJobExperienceCache", key="#experience")
     public List<Object> experience(String experience){
         Column gyeongryeokGbcdNm = this.rootDataFrame.col("gyeongryeokGbcdNm");
-        return Arrays.asList(this.rootDataFrame.filter(gyeongryeokGbcdNm.contains(experience)).toJSON().collect());
+        return Arrays.asList(this.rootDataFrame.filter(gyeongryeokGbcdNm.contains(experience)).distinct().toJSON().collect());
     }
     /***** 복지 *****/
     @Cacheable(value="findJobWelfareCache", key="#welfare")
     public List<Object> welfare(String welfare){
         Column bokrihs = this.rootDataFrame.col("bokrihs");
-        return Arrays.asList(this.rootDataFrame.filter(bokrihs.contains(welfare)).toJSON().collect());
+        return Arrays.asList(this.rootDataFrame.filter(bokrihs.contains(welfare)).distinct().toJSON().collect());
     }
 
     /***** 직종별 *****/
     @Cacheable(value="findJobOccupationCache", key="#occupation")
     public List<Object> occupation(String occupation){
         Column eopjongGbcdNm = this.rootDataFrame.col("eopjongGbcdNm");
-        return Arrays.asList(this.rootDataFrame.filter(eopjongGbcdNm.contains(occupation)).toJSON().collect());
+        return Arrays.asList(this.rootDataFrame.filter(eopjongGbcdNm.contains(occupation)).distinct().toJSON().collect());
     }
 
     /***** 작성일 최신순 *****/
