@@ -27,6 +27,15 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    /***** 전체 *****/
+    @ApiOperation(value = "파라미터 없음", notes = "전체 리스트")
+    @GetMapping("/all")
+    public MaApiResponse<List<Object>> disArea(){
+
+        List<Object> list = this.categoryService.all("all");
+        return new MaApiResponse<>(list);
+    }
+
     /***** 지역별 *****/
     @ApiOperation(value = "지역명", notes = "지역별 회사 리스트를 가져옵니다.")
     @GetMapping("/area/{area}")

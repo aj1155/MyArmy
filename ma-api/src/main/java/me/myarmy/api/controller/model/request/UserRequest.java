@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Optional;
 
@@ -29,10 +28,9 @@ public class UserRequest {
     @NotNull
     private String password;
     @ApiModelProperty(value = "이메일(유저 id 동일) 필수")
-    @Pattern(regexp="^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\\\w+\\\\.)+\\\\w+$")
+    //@Pattern(regexp="^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\\\w+\\\\.)+\\\\w+$")
     @NotNull
     private String email;
-    private String auth;
 
     public UserRequest(@JsonProperty("email") String email,
                        @JsonProperty("password") String password,
