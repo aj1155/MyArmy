@@ -29,7 +29,25 @@ public class RecruitingEntityTest {
 
     @Test
     public void userAndRoleManyToManyTest() {
-        Recruiting recruiting = Recruiting.of("복리후생", "대졸 이상", "산업기능요원 채용", "이가인", "주조, 검사", "010-1234-5678", "02-1234-5678", "엔아이비", "철강", "서울시 종로구 홍지동", "신입", "1800", "이메일, 우편", "20170504", "N", "현역", "산업기능요원");
+        Recruiting recruiting = new Recruiting.RecruitingBuilder()
+                .setBokrihs("복리후생")
+                .setCjhakryeok("대졸이상")
+                .setCyjemokNm("산업기능요원 채용")
+                .setDamdangjaFnm("이가인")
+                .setDdeopmuNm("주조, 검사")
+                .setDdjyeonrakcheoNo("010-1234-5667")
+                .setDpyeonrakcheoNo("02-1234-5678")
+                .setEopcheNm("윈윈")
+                .setEopjongGbcdNm("철강")
+                .setGeunmujy("서울시 종로구 홍지동")
+                .setGyeongryeokGbcdNm("신입")
+                .setGyjogeonCdNm("1800")
+                .setJeopsubb("이메일, 우편")
+                .setMagamDt("20170504")
+                .setSschaeyongYn("N")
+                .setYeokjongBrcdNm("현역")
+                .setYowonGbcdNm("산업기능요원")
+                .build();
         this.entityManager.persist(recruiting);
 
     }
