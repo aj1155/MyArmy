@@ -1,9 +1,7 @@
 package me.myarmy.domain;
 
 import lombok.extern.slf4j.Slf4j;
-import me.myarmy.api.domain.Recruiting;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,8 +27,8 @@ public class RecruitingEntityTest {
 
     @Test
     public void userAndRoleManyToManyTest() {
-        Recruiting recruiting = Recruiting.of("복리후생", "대졸 이상", "산업기능요원 채용", "이가인", "주조, 검사", "010-1234-5678", "02-1234-5678", "엔아이비", "철강", "서울시 종로구 홍지동", "신입", "1800", "이메일, 우편", "20170504", "N", "현역", "산업기능요원");
-        this.entityManager.persist(recruiting);
+        //ecruiting recruiting = Recruiting.of("복리후생", "대졸 이상", "산업기능요원 채용", "이가인", "주조, 검사", "010-1234-5678", "02-1234-5678", "엔아이비", "철강", "서울시 종로구 홍지동", "신입", "1800", "이메일, 우편", "20170504", "N", "현역", "산업기능요원");
+        //this.entityManager.persist(recruiting);
 
     }
 

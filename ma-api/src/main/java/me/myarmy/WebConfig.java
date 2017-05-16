@@ -41,11 +41,13 @@ public class WebConfig {
         return characterEncodingFilter;
     }
 
-    @Bean public ScheduledExecutorFactoryBean scheduledExecutorService() {
+    @Bean
+    public ScheduledExecutorFactoryBean scheduledExecutorService() {
         ScheduledExecutorFactoryBean scheduledExecutorFactoryBean = new ScheduledExecutorFactoryBean();
         scheduledExecutorFactoryBean.setPoolSize(5);
         return scheduledExecutorFactoryBean;
     }
+
 
 
 
