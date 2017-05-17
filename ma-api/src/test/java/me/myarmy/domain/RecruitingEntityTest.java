@@ -3,7 +3,6 @@ package me.myarmy.domain;
 import lombok.extern.slf4j.Slf4j;
 import me.myarmy.api.domain.Recruiting;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
