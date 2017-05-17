@@ -2,6 +2,7 @@ package me.myarmy.domain;
 
 import lombok.extern.slf4j.Slf4j;
 import me.myarmy.api.domain.Recruiting;
+import me.myarmy.api.repository.RecruitingRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,13 +23,17 @@ import javax.persistence.EntityManagerFactory;
 @AutoConfigureMockMvc
 @Slf4j
 public class RecruitingEntityTest {
+
     @Autowired
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
 
+    @Autowired
+    private RecruitingRepository recruitingRepository;
+
     @Test
-    public void userAndRoleManyToManyTest() {
-        Recruiting recruiting = new Recruiting.RecruitingBuilder()
+    public void recruitingTest() {
+        Recruiting createRecruiting = new Recruiting.RecruitingBuilder()
                 .setBokrihs("복리후생")
                 .setCjhakryeok("대졸이상")
                 .setCyjemokNm("산업기능요원 채용")
@@ -47,8 +52,7 @@ public class RecruitingEntityTest {
                 .setYeokjongBrcdNm("현역")
                 .setYowonGbcdNm("산업기능요원")
                 .build();
-        this.entityManager.persist(recruiting);
-
+        this.entityManager.persist(createRecruiting);
     }
 
     @Before
