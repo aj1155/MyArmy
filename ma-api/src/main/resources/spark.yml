@@ -4,5 +4,6 @@ app.name : MyArmy
 master.uri : local[2]
 
 input.file : /usr/dataArmy.xml
-#input.file : C:\\Users\\USER\\Downloads\\dataArmy.xml
+input.file : C:\\Users\\USER\\Downloads\\dataArmy.xml
+#input.file : C:\\Users\\USER\\Downloads\\army5.csv
 

@@ -24,6 +24,7 @@ public class RootRDDConfig {
     @Bean
     public DataFrame rootDataFrame() {
         SQLContext sql = new SQLContext(javaSparkContext);
+
         DataFrame data =
                 sql.read().
                         format("com.databricks.spark.xml")
