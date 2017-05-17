@@ -37,4 +37,13 @@ public class UserFavor extends BaseEntity implements Serializable {
 
     @Column(name = "geunmujysido")
     private String geunmujysido;
+
+    public static UserFavor of(String bokrihs,String cjhakryeok,String eopjonggbcdnm,String geunmujysido){
+        return UserFavor.builder()
+                .bokrihs(bokrihs)
+                .cjhakryeok(cjhakryeok)
+                .eopjonggbcdnm(eopjonggbcdnm)
+                .geunmujysido(geunmujysido)
+                .build();
+    }
 }

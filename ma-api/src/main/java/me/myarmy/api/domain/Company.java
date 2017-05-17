@@ -32,6 +32,9 @@ public class Company implements Serializable {
     @Column(name = "ccdatabalsaengdtm")
     private String ccdatabalsaengDtm;
 
+    @Column(name = "cyjemoknm")
+    private String cyjemoknm;
+
     @Column(name = "cjdatabyeongyeongdtm")
     private String cjdatabyeongyeongDtm;
 
