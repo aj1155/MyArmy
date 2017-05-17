@@ -4,7 +4,7 @@ import { MaCompanyInfoComponent } from './ma-company-info/ma-company-info.compon
 
 const appRoutes:Routes = <Routes>[
   //http://localhost:4200/test로 접근하면 MaCompanyInfoComponent 실행
-  {path: 'test', /*canActivate: [], */component: MaCompanyInfoComponent},
+  {path: 'info', /*canActivate: [], */component: MaCompanyInfoComponent},
   {path: '**', redirectTo: ''}
  ];
 

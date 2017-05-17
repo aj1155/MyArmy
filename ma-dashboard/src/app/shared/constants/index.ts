@@ -15,4 +15,4 @@ export const DEFAULT_DASHBOARD_API_URL = defaultDashboardApiUrl;  // URL to web 
 
 
 //
-export const COMPANY_INFO = DEFAULT_DASHBOARD_API_URL + 'test';
+export const COMPANY_INFO = DEFAULT_DASHBOARD_API_URL + 'info';
