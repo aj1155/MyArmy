@@ -20,12 +20,25 @@ public class RecruitingServiceImpl implements RecruitingService {
 
     @Override
     public void createRecruiting(RecruitingRequest recruitingRequest){
-        Recruiting recruiting = Recruiting.of(recruitingRequest.getUid(), recruitingRequest.getBokrihs(), recruitingRequest.getCjhakryeok(), recruitingRequest.getCyjemokNm(),
-                recruitingRequest.getDamdangjaFnm(), recruitingRequest.getDdeopmuNm(), recruitingRequest.getDdjyeonrakcheoNo(),
-                recruitingRequest.getDpyeonrakcheoNo(), recruitingRequest.getEopcheNm(), recruitingRequest.getEopjongGbcdNm(),
-                recruitingRequest.getGeunmujy(), recruitingRequest.getGyeongryeokGbcdNm(), recruitingRequest.getGyjogeonCdNm(),
-                recruitingRequest.getJeopsubb(), recruitingRequest.getMagamDt(), recruitingRequest.getYeokjongBrcdNm(),
-                recruitingRequest.getSschaeyongYn(), recruitingRequest.getYowonGbcdNm());
+        Recruiting recruiting = new Recruiting.RecruitingBuilder()
+                .setBokrihs(recruitingRequest.getBokrihs())
+                .setCjhakryeok(recruitingRequest.getCjhakryeok())
+                .setCyjemokNm(recruitingRequest.getCyjemokNm())
+                .setDamdangjaFnm(recruitingRequest.getDamdangjaFnm())
+                .setDdeopmuNm(recruitingRequest.getDdeopmuNm())
+                .setDdjyeonrakcheoNo(recruitingRequest.getDdjyeonrakcheoNo())
+                .setDpyeonrakcheoNo(recruitingRequest.getDpyeonrakcheoNo())
+                .setEopcheNm(recruitingRequest.getEopcheNm())
+                .setEopjongGbcdNm(recruitingRequest.getEopjongGbcdNm())
+                .setGeunmujy(recruitingRequest.getGeunmujy())
+                .setGyeongryeokGbcdNm(recruitingRequest.getGyeongryeokGbcdNm())
+                .setGyjogeonCdNm(recruitingRequest.getGyjogeonCdNm())
+                .setJeopsubb(recruitingRequest.getJeopsubb())
+                .setSschaeyongYn(recruitingRequest.getSschaeyongYn())
+                .setYeokjongBrcdNm(recruitingRequest.getYeokjongBrcdNm())
+                .setYowonGbcdNm(recruitingRequest.getYowonGbcdNm())
+                .setMagamDt(recruitingRequest.getMagamDt())
+                .build();
         this.recruitingRepository.save(recruiting);
     }
 }

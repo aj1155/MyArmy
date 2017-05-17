@@ -11,10 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "RECRUITING")
 @Getter
-@Setter
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class Recruiting extends BaseEntity implements Serializable {
 
@@ -24,9 +21,6 @@ public class Recruiting extends BaseEntity implements Serializable {
     @GeneratedValue
     @Column(name = "ID")
     private Long Id;
-
-    @Column(name = "UID")
-    private String uid;
 
     @Column(name = "WELFARE")
     private String bokrihs;
@@ -82,26 +76,136 @@ public class Recruiting extends BaseEntity implements Serializable {
     @Column(name = "AGENT_TYPE")
     private String yowonGbcdNm;
 
-    public static Recruiting of(String uid, String bokrihs, String cjhakryeok, String cyjemokNm, String damdangjaFnm, String ddeopmuNm, String ddjyeonrakcheoNo, String dpyeonrakcheoNo, String eopcheNm, String eopjongGbcdNm, String geunmujy, String gyeongryeokGbcdNm, String gyjogeonCdNm, String jeopsubb, String magamDt, String sschaeyongYn, String yeokjongBrcdNm, String yowonGbcdNm){
-        return Recruiting.builder()
-                .uid(uid)
-                .bokrihs(bokrihs)
-                .cjhakryeok(cjhakryeok)
-                .cyjemokNm(cyjemokNm)
-                .damdangjaFnm(damdangjaFnm)
-                .ddeopmuNm(ddeopmuNm)
-                .ddjyeonrakcheoNo(ddjyeonrakcheoNo)
-                .dpyeonrakcheoNo(dpyeonrakcheoNo)
-                .eopcheNm(eopcheNm)
-                .eopjongGbcdNm(eopjongGbcdNm)
-                .geunmujy(geunmujy)
-                .gyeongryeokGbcdNm(gyeongryeokGbcdNm)
-                .gyjogeonCdNm(gyjogeonCdNm)
-                .jeopsubb(jeopsubb)
-                .magamDt(magamDt)
-                .yeokjongBrcdNm(yeokjongBrcdNm)
-                .sschaeyongYn(sschaeyongYn)
-                .yowonGbcdNm(yowonGbcdNm)
-                .build();
+    private Recruiting(RecruitingBuilder recruitingBuilder){
+        this.bokrihs = recruitingBuilder.bokrihs;
+        this.cjhakryeok = recruitingBuilder.cjhakryeok;
+        this.cyjemokNm = recruitingBuilder.cyjemokNm;
+        this.damdangjaFnm = recruitingBuilder.damdangjaFnm;
+        this.ddeopmuNm = recruitingBuilder.ddeopmuNm;
+        this.ddjyeonrakcheoNo = recruitingBuilder.ddjyeonrakcheoNo;
+        this.dpyeonrakcheoNo = recruitingBuilder.dpyeonrakcheoNo;
+        this.eopcheNm = recruitingBuilder.eopcheNm;
+        this.eopjongGbcdNm = recruitingBuilder.eopjongGbcdNm;
+        this.geunmujy = recruitingBuilder.geunmujy;
+        this.gyeongryeokGbcdNm = recruitingBuilder.gyeongryeokGbcdNm;
+        this.gyjogeonCdNm = recruitingBuilder.gyjogeonCdNm;
+        this.jeopsubb = recruitingBuilder.jeopsubb;
+        this.magamDt = recruitingBuilder.magamDt;
+        this.sschaeyongYn = recruitingBuilder.sschaeyongYn;
+        this.yeokjongBrcdNm = recruitingBuilder.yeokjongBrcdNm;
+        this.yowonGbcdNm = recruitingBuilder.yowonGbcdNm;
+
+    }
+
+    public static class RecruitingBuilder{
+        private String bokrihs;
+        private String cjhakryeok;
+        private String cyjemokNm;
+        private String damdangjaFnm;
+        private String ddeopmuNm;
+        private String ddjyeonrakcheoNo;
+        private String dpyeonrakcheoNo;
+        private String eopcheNm;
+        private String eopjongGbcdNm;
+        private String geunmujy;
+        private String gyeongryeokGbcdNm;
+        private String gyjogeonCdNm;
+        private String jeopsubb;
+        private String magamDt;
+        private String sschaeyongYn;
+        private String yeokjongBrcdNm;
+        private String yowonGbcdNm;
+
+        public RecruitingBuilder(){
+        }
+
+        public RecruitingBuilder setBokrihs(String bokrihs){
+            this.bokrihs = bokrihs;
+            return this;
+        }
+
+        public RecruitingBuilder setCjhakryeok(String cjhakryeok){
+            this.cjhakryeok = cjhakryeok;
+            return this;
+        }
+
+        public RecruitingBuilder setCyjemokNm(String cyjemokNm){
+            this.cyjemokNm = cyjemokNm;
+            return this;
+        }
+
+        public RecruitingBuilder setDamdangjaFnm(String damdangjaFnm){
+            this.damdangjaFnm = damdangjaFnm;
+            return this;
+        }
+        public RecruitingBuilder setDdeopmuNm(String ddeopmuNm){
+            this.ddeopmuNm = ddeopmuNm;
+            return this;
+        }
+
+        public RecruitingBuilder setDdjyeonrakcheoNo(String ddjyeonrakcheoNo){
+            this.ddjyeonrakcheoNo = ddjyeonrakcheoNo;
+            return this;
+        }
+
+        public RecruitingBuilder setDpyeonrakcheoNo(String dpyeonrakcheoNo){
+            this.dpyeonrakcheoNo = dpyeonrakcheoNo;
+            return this;
+        }
+
+        public RecruitingBuilder setEopcheNm(String eopcheNm){
+            this.eopcheNm = eopcheNm;
+            return this;
+        }
+
+        public RecruitingBuilder setEopjongGbcdNm(String eopjongGbcdNm){
+            this.eopjongGbcdNm = eopjongGbcdNm;
+            return this;
+        }
+
+        public RecruitingBuilder setGyeongryeokGbcdNm(String gyeongryeokGbcdNm){
+            this.gyeongryeokGbcdNm = gyeongryeokGbcdNm;
+            return this;
+        }
+
+        public RecruitingBuilder setGeunmujy(String geunmujy){
+            this.geunmujy = geunmujy;
+            return this;
+        }
+
+        public RecruitingBuilder setGyjogeonCdNm(String gyjogeonCdNm){
+            this.gyjogeonCdNm = gyjogeonCdNm;
+            return this;
+        }
+
+        public RecruitingBuilder setJeopsubb(String jeopsubb){
+            this.jeopsubb = jeopsubb;
+            return this;
+        }
+
+        public RecruitingBuilder setMagamDt(String magamDt){
+            this.magamDt = magamDt;
+            return this;
+        }
+
+        public RecruitingBuilder setSschaeyongYn(String sschaeyongYn){
+            this.sschaeyongYn = sschaeyongYn;
+            return this;
+        }
+
+        public RecruitingBuilder setYeokjongBrcdNm(String yeokjongBrcdNm){
+            this.yeokjongBrcdNm = yeokjongBrcdNm;
+            return this;
+        }
+
+        public RecruitingBuilder setYowonGbcdNm(String yowonGbcdNm){
+            this.yowonGbcdNm = yowonGbcdNm;
+            return this;
+        }
+
+        public Recruiting build(){
+            return new Recruiting(this);
+        }
+
     }
 }

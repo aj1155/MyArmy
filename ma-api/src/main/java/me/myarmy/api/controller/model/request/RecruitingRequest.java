@@ -18,10 +18,6 @@ import javax.validation.constraints.NotNull;
 public class RecruitingRequest {
     private Long Id;
 
-    @ApiModelProperty(value = "userId(email) 필수")
-    @NotNull
-    private String uid;
-
     @ApiModelProperty(value = "복리후생 (필수)")
     @NotNull
     private String bokrihs;
