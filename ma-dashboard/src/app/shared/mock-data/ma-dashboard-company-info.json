@@ -1,0 +1,23 @@
+{
+  "code": 200,
+  "result": {
+    "bokrihs": "복리후생",
+    "cjhakryeok" : "대졸이상",
+    "cyjemokNm" : "산업기능요원 채용",
+    "damdangjaFnm" : "이가인",
+    "ddeopmuNm" : "주조, 검사",
+    "ddjyeonrakcheoNo" : "010-1234-5678",
+    "dpyeonrakcheoNo" : "02-1234-5678",
+    "eopcheNm" : "윈윈",
+    "eopjongGbcdNm" : "철강",
+    "geunmujy" : "서울시 종로구 홍지동",
+    "gyeongryeokGbcdNm" : "신입",
+    "gyjogeonCdNm" : "1800",
+    "hmpgaddr" : "http://www.win3win.com",
+    "jeopsubb" : "이메일",
+    "magamDt" : "20170806",
+    "sschaeyongYn" : "N",
+    "yeokjongBrcdNm" : "현역",
+    "yowonGbcdNm" : "산업기능요원"
+  }
+}
