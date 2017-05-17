@@ -23,7 +23,7 @@ logging.level:
   org.hibernate.type.BasicTypeRegistry: WARN
 ---
 
-spring.datasource.url: jdbc:mysql://localhost/myarmy?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+spring.datasource.url: jdbc:mysql://52.78.173.18/myarmy?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
 spring.datasource.username: myarmy
 spring.datasource.password: 1234
 spring.datasource.driverClassName: com.mysql.jdbc.Driver
@@ -51,7 +51,7 @@ jwt.tokenheader: X-Auth-Token
 
 
 ---
-test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhajExNTVAbmF2ZXIuY29tIiwiZXhwIjoxNDkzOTY3MzI3fQ.9S34Zb8cVGdR5ycMv7J9ZcU57WmIyQDgTfH_SggeY6UxpIcO_JnXZgQYoGiB2Nnrb3CXBi8m6JKEHnzqiaYOmA
+test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpd2J0YmdvdHdfQGdtYWlsLmNvbSIsImV4cCI6MTQ5NTYzMjUyMn0.DuYCh-DrwtyNHHGlqaj0j9op9k9tAb8Fg-xXsD2Nc1m0mqkQ0tyuo3yV7OnvCN4sOLoJm4EVUDYOizW-OPmhQA
 
 ---
 mail:

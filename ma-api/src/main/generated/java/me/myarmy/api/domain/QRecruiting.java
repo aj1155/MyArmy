@@ -59,8 +59,6 @@ public class QRecruiting extends EntityPathBase<Recruiting> {
 
     public final StringPath sschaeyongYn = createString("sschaeyongYn");
 
-    public final StringPath uid = createString("uid");
-
     public final StringPath yeokjongBrcdNm = createString("yeokjongBrcdNm");
 
     public final StringPath yowonGbcdNm = createString("yowonGbcdNm");

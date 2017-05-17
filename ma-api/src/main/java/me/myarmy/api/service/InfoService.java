@@ -1,9 +1,14 @@
 package me.myarmy.api.service;
 
 import me.myarmy.api.controller.exception.RestNotFoundTitleException;
-import org.apache.spark.sql.Column;
+import me.myarmy.api.domain.Company;
+import me.myarmy.api.domain.UserFavor;
+import me.myarmy.api.repository.CompanyRepository;
+import me.myarmy.api.repository.UserFavorRepository;
 import org.apache.spark.sql.DataFrame;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,18 +23,27 @@ public class InfoService {
     @Autowired
     private RestService restService;
 
-    public String getThumbUrl(String cygonggoNo) throws RestNotFoundTitleException {
-        return this.restService.getThumb(getHmpg(cygonggoNo));
+    @Autowired
+    private CompanyRepository companyRepository;
+
+    @Autowired
+    private UserFavorRepository userFavorRepository;
+
+    public String getThumbUrl(int id) throws RestNotFoundTitleException {
+        return this.restService.getThumb(getHmpg(id));
     }
 
-    public String getHmpg(String cygonggoNo){
-        System.out.println(cygonggoNo);
-        Column cygonggoNo1 = this.rootDataFrame.col("cygonggoNo");
-        Column hmpgAddr = this.rootDataFrame.col("hmpgAddr");
-        String hmpg = this.rootDataFrame.filter(cygonggoNo1.equalTo(cygonggoNo)).select(hmpgAddr).collect()[0].toString();
-        StringBuilder sb = new StringBuilder(hmpg);
-        sb.deleteCharAt(0).deleteCharAt(sb.length()-1);
-        System.out.println(sb.toString());
-        return sb.toString();
+    public String getHmpg(int id){
+        Company company = this.companyRepository.findOne(id);
+        return company.getHmpgAddr();
+    }
+
+    public Company getCompanyDetails(int id) {
+        Company company = this.companyRepository.findOne(id);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        UserFavor userFavor = UserFavor.of(company.getId(),currentUserName,company.getBokrihs(),company.getCjhakryeok(),company.getEopjongGbcdNm(),company.getGeunmujysido());
+        this.userFavorRepository.save(userFavor);
+        return company;
     }
 }

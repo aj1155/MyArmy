@@ -1,6 +1,7 @@
 package me.myarmy.service;
 
 import lombok.extern.slf4j.Slf4j;
+import me.myarmy.api.domain.Company;
 import me.myarmy.api.service.InfoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +26,13 @@ public class InfoServiceTest {
 
     @Test
     public void getThumbUrl(){
-        String s = this.infoService.getHmpg("2000000035039");
+        String s = this.infoService.getHmpg(15);
         assertThat(s).isNotNull();
+    }
+
+    @Test
+    public void getCompanyDetails(){
+        Company company = this.infoService.getCompanyDetails(15);
+        assertThat(company).isNotNull();
     }
 }

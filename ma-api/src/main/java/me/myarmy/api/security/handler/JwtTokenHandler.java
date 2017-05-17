@@ -2,6 +2,7 @@ package me.myarmy.api.security.handler;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import me.myarmy.api.controller.exception.UserNotFoundException;
 import me.myarmy.api.security.UserDetailsImpl;
 import me.myarmy.api.service.custom.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class JwtTokenHandler {
         this.userService = userService;
     }
 
-    public Optional<UserDetails> parseUserFromToken(String token) {
+    public Optional<UserDetails> parseUserFromToken(String token) throws UserNotFoundException {
         String email = Jwts.parser()
                 .setSigningKey(secret)
                 .parseClaimsJws(token)
