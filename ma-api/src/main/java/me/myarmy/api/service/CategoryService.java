@@ -1,7 +1,9 @@
 package me.myarmy.api.service;
 
 import lombok.extern.slf4j.Slf4j;
+import me.myarmy.api.domain.Company;
 import me.myarmy.api.domain.Resume;
+import me.myarmy.api.repository.CompanyRepository;
 import me.myarmy.api.repository.ResumeRepository;
 import org.apache.spark.sql.Column;
 import org.apache.spark.sql.DataFrame;
@@ -27,49 +29,54 @@ public class CategoryService {
     @Autowired
     private ResumeRepository resumeRepository;
 
-    /***** 전체 *****/
+    @Autowired
+    private CompanyRepository companyRepository;
+
+    /*
     @Cacheable(value="findJobAll", key="#all")
     public List<Object> all(String all) {
-        return Arrays.asList(this.rootDataFrame.toJSON().collect());
+        Column geunmujy = this.rootDataFrame.col("geunmujy");
+        return Arrays.asList(this.rootDataFrame.filter(geunmujy.contains(area)).distinct().toJSON().collect());
+    }
+    /*
+
+     /***** 전체 *****/
+    @Cacheable(value="findJobAll", key="#all")
+    public List<Company> all(String all) {
+        return this.companyRepository.findAll();
     }
 
     /***** 지역별 *****/
     @Cacheable(value="findJobAreaCache", key="#area")
-    public List<Object> area(String area) {
-        Column geunmujy = this.rootDataFrame.col("geunmujy");
-        return Arrays.asList(this.rootDataFrame.filter(geunmujy.contains(area)).distinct().toJSON().collect());
+    public List<Company> area(String area) {
+        return this.companyRepository.findByArea(area);
     }
     /***** 학력 *****/
     @Cacheable(value="findJobGradeCache", key="#grade")
-    public List<Object> grade(String grade){
-        Column cjhakryeok = this.rootDataFrame.col("cjhakryeok");
-        return Arrays.asList(this.rootDataFrame.filter(cjhakryeok.equalTo(grade)).distinct().toJSON().collect());
+    public List<Company> grade(String grade){
+        return this.companyRepository.findByGrade(grade);
     }
     /***** 경력 *****/
     @Cacheable(value="findJobExperienceCache", key="#experience")
-    public List<Object> experience(String experience){
-        Column gyeongryeokGbcdNm = this.rootDataFrame.col("gyeongryeokGbcdNm");
-        return Arrays.asList(this.rootDataFrame.filter(gyeongryeokGbcdNm.contains(experience)).distinct().toJSON().collect());
+    public List<Company> experience(String experience){
+        return this.companyRepository.findByExperience(experience);
     }
     /***** 복지 *****/
     @Cacheable(value="findJobWelfareCache", key="#welfare")
-    public List<Object> welfare(String welfare){
-        Column bokrihs = this.rootDataFrame.col("bokrihs");
-        return Arrays.asList(this.rootDataFrame.filter(bokrihs.contains(welfare)).distinct().toJSON().collect());
+    public List<Company> welfare(String welfare){
+        return this.companyRepository.findByWelfare(welfare);
     }
 
     /***** 직종별 *****/
     @Cacheable(value="findJobOccupationCache", key="#occupation")
-    public List<Object> occupation(String occupation){
-        Column eopjongGbcdNm = this.rootDataFrame.col("eopjongGbcdNm");
-        return Arrays.asList(this.rootDataFrame.filter(eopjongGbcdNm.contains(occupation)).distinct().toJSON().collect());
+    public List<Company> occupation(String occupation){
+        return this.companyRepository.findByOccupation(occupation);
     }
 
     /***** 작성일 최신순 *****/
     @Cacheable(value="findJopCreatedDateCache")
-    public List<Object> createdDate(){
-        Column ccdatabalsaengDtm = this.rootDataFrame.col("ccdatabalsaengDtm");
-        return Arrays.asList(this.rootDataFrame.sort(ccdatabalsaengDtm.desc()).toJSON().collect());
+    public List<Company> createdDate(){
+        return this.companyRepository.findByDateDesc();
     }
 
     /****스마트 매칭****/

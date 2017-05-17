@@ -1,5 +1,6 @@
 package me.myarmy.api.security;
 
+import me.myarmy.api.controller.exception.UserNotFoundException;
 import me.myarmy.api.security.handler.JwtTokenHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -31,7 +32,7 @@ public class TokenAuthenticationService {
         response.addHeader(AUTH_HEADER_NAME,this.jwtTokenHandler.createTokenForUser(user));
     }
 
-    public Authentication generateAuthenticationFromRequest(HttpServletRequest request){
+    public Authentication generateAuthenticationFromRequest(HttpServletRequest request) throws UserNotFoundException{
         final String token = request.getHeader(AUTH_HEADER_NAME);
         if(token == null || token.isEmpty()) return null;
         return this.jwtTokenHandler

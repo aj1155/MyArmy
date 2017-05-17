@@ -10,6 +10,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -27,8 +29,8 @@ public class CompanyServiceTest {
 
     @Test
     public void welTest() {
-        Company result = this.companyService.findByWelfare("aa");
-        System.out.println(result);
+        List<Company> result = this.companyService.findByWelfare("기숙사운영");
+        result.forEach(System.out::println);
         assertThat(result).isNotNull();
     }
 }

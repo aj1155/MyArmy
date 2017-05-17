@@ -1,6 +1,7 @@
 package me.myarmy.api.controller.filter;
 
 import io.jsonwebtoken.JwtException;
+import me.myarmy.api.controller.exception.UserNotFoundException;
 import me.myarmy.api.security.TokenAuthenticationService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -27,7 +28,7 @@ public class StatelessAuthenticationFilter extends GenericFilterBean {
     }
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException,UserNotFoundException {
         try {
             Authentication authentication = tokenAuthenticationService.generateAuthenticationFromRequest((HttpServletRequest) req);
             SecurityContextHolder.getContext().setAuthentication(authentication);

@@ -1,5 +1,6 @@
 package me.myarmy.api.security;
 
+import me.myarmy.api.controller.exception.UserNotFoundException;
 import me.myarmy.api.controller.filter.CORSFilter;
 import me.myarmy.api.controller.filter.StatelessAuthenticationFilter;
 import me.myarmy.api.controller.filter.StatelessLoginFilter;
@@ -57,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception,UserNotFoundException {
         http.csrf().disable();
 
         //h2 database console

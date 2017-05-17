@@ -7,6 +7,8 @@ import me.myarmy.api.service.custom.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Manki Kim on 2017-05-16.
  */
@@ -18,7 +20,7 @@ public class CompanyServiceImpl implements CompanyService {
     private CompanyRepository companyRepository;
 
     @Override
-    public Company findByWelfare(String bokrihs) {
-        return this.companyRepository.findOne(1);
+    public List<Company> findByWelfare(String bokrihs) {
+        return this.companyRepository.findByWelfare(bokrihs);
     }
 }
