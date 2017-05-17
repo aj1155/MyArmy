@@ -122,4 +122,5 @@ public class UserDetailsImpl implements UserDetails,CredentialsContainer {
     @Override
     public void eraseCredentials() {
     }
+
 }

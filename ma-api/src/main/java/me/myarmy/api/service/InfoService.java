@@ -7,6 +7,8 @@ import me.myarmy.api.repository.CompanyRepository;
 import me.myarmy.api.repository.UserFavorRepository;
 import org.apache.spark.sql.DataFrame;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -38,7 +40,9 @@ public class InfoService {
 
     public Company getCompanyDetails(int id) {
         Company company = this.companyRepository.findOne(id);
-        UserFavor userFavor = UserFavor.of(company.getBokrihs(),company.getCjhakryeok(),company.getEopjongGbcdNm(),company.getGeunmujysido());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        UserFavor userFavor = UserFavor.of(company.getId(),currentUserName,company.getBokrihs(),company.getCjhakryeok(),company.getEopjongGbcdNm(),company.getGeunmujysido());
         this.userFavorRepository.save(userFavor);
         return company;
     }
