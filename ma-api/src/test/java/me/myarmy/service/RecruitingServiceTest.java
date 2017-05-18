@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Slf4j
-public class RecruitServiceTest {
+public class RecruitingServiceTest {
 
     @Autowired
     private RecruitingService recruitingService;

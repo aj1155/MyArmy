@@ -36,6 +36,7 @@ public class ResumeRequest {
     @NotNull
     private String address;
 
+    //기타경력사항
     private String miscellaneous;
 
 }

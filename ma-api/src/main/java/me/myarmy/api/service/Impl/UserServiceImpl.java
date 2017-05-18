@@ -1,6 +1,7 @@
 package me.myarmy.api.service.Impl;
 
 import me.myarmy.api.controller.exception.NotUniqueIdException;
+import me.myarmy.api.controller.exception.UserNotFoundException;
 import me.myarmy.api.controller.model.request.UserRequest;
 import me.myarmy.api.domain.Role;
 import me.myarmy.api.domain.User;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Manki Kim on 2017-04-01.
@@ -30,8 +32,13 @@ public class UserServiceImpl implements UserService {
     private RoleRepository roleRepository;
 
     @Override
-    public User findUserByEmail(String email) {
-        return this.userRepository.findByEmail(email);
+    public User findUserByEmail(String email) throws UserNotFoundException {
+        Optional<User> user = Optional.ofNullable(this.userRepository.findByEmail(email));
+        if(user.isPresent()){
+            return user.get();
+        }else{
+            throw new UserNotFoundException("로그인 해주세요");
+        }
     }
 
     @Override

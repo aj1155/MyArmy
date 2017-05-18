@@ -8,11 +8,11 @@ import { MaCompanyRegistComponent } from './ma-company-regist/ma-company-regist.
 
 const appRoutes:Routes = <Routes>[
   //http://localhost:4200/test로 접근하면 MaCompanyInfoComponent 실행
-  {path: 'test', /*canActivate: [], */component: MaCompanyInfoComponent},
   {path: 'footer', component : MaFooterComponent}, // footer routes connect 작성자 : cheoljin 작성일 : 2017.05.01
   {path: 'regist', component : MaRegistComponent}, // regist routes connect 작성자 : cheoljin 작성일 : 2017.05.10
   {path: 'regist/personal', component : MaPersonalRegistComponent},
   {path: 'regist/company', component : MaCompanyRegistComponent},
+  {path: 'info', /*canActivate: [], */component: MaCompanyInfoComponent},
   {path: '**', redirectTo: ''}
  ];
 

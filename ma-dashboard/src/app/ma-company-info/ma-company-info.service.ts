@@ -9,8 +9,9 @@ export class MaCompanyInfoService {
   //requestHandler (get, post, pull, delete)
   constructor(private requestHandler:RequestHandler) { }
 
-  test(){
-    console.log(COMPANY_INFO);
+  //id:any
+  getCompanyInfo(){
+    //let url = COMPANY_INFO + '/' + id;
     return this.requestHandler.get(COMPANY_INFO);
   }
 
