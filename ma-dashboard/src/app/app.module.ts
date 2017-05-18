@@ -21,8 +21,8 @@ import { MaFooterModule } from './ma-footer/ma-footer.module';
 import { MaRegistModule } from './ma-regist/ma-regist.module';
 import { MaPersonalRegistComponent } from './ma-personal-regist/ma-personal-regist.component';
 import { MaCompanyRegistComponent } from './ma-company-regist/ma-company-regist.component';
-
-
+import { MaPersonalRegistModule } from './ma-personal-regist/ma-personal-regist.module';
+import { MaCompanyRegistModule } from './ma-company-regist/ma-company-regist.module';
 
 @NgModule({
   declarations: [
@@ -30,10 +30,12 @@ import { MaCompanyRegistComponent } from './ma-company-regist/ma-company-regist.
     MaHeaderComponent,
     MaTopicsComponent,
     MaCompanyListComponent,
-    MaPersonalRegistComponent,
-    MaCompanyRegistComponent
+    // MaPersonalRegistComponent,
+    // MaCompanyRegistComponent
   ],
   imports: [
+    MaCompanyRegistModule,
+    MaPersonalRegistModule,
     MaRegistModule,
     MaFooterModule,
     MaCompanyInfoModule,

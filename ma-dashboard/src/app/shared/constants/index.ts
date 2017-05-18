@@ -18,3 +18,5 @@ export const DEFAULT_DASHBOARD_API_URL = defaultDashboardApiUrl;  // URL to web 
 export const COMPANY_INFO = DEFAULT_DASHBOARD_API_URL + 'test';
 export const FOOTER = DEFAULT_DASHBOARD_API_URL + 'footer';
 export const REGIST = DEFAULT_DASHBOARD_API_URL + 'regist';
+export const PERSONALREGIST = DEFAULT_DASHBOARD_API_URL + 'regist/personal';
+export const COMPANYREGIST = DEFAULT_DASHBOARD_API_URL + 'regist/company';
