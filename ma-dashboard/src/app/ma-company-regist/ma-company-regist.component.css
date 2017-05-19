@@ -1,0 +1,63 @@
+.ma-company-regist-frame {
+  position: absolute;
+  display: inline-block;
+  margin-top : 84px;
+  background-color: #f8f9f9;
+  width : 1566px;
+  height: 995px;
+}
+.top-dark-line {
+  position: absolute;
+  display : inline-block;
+  width: 10px;
+  height: 23px;
+  margin: 70px 1386px 902px 170px;
+}
+.regist-text-title {
+  position: absolute;
+  display: inline-block;
+  width: 200px;
+  height: 26px;
+  font-family: NotoSansCJKkr;
+  font-weight: bold;
+  font-size: 27.1px;
+  line-height: 0.1;
+  letter-spacing: 1.1px;
+  margin: 80px 1275px 902px 193px;
+  color: #000000;
+  vertical-align: bottom;
+}
+.join-company {
+  position: absolute;
+  margin : 117px 1122px 826px 158px;
+  display: inline-block;
+}
+.company-name {
+  position: absolute;
+  display: inline-block;
+  margin-top : 161px;
+  margin-left : 676px;
+  font-size: 27.1px;
+}
+.company-name-input-frame {
+  position: absolute;
+  display: inline-block;
+  width: 315px;
+  height: 65px;
+  margin-top: 204px;
+  margin-left: 671px;
+}
+.red_box {
+  position: absolute;
+  display: inline-block;
+}
+.company_name_input {
+  outline:none;
+  border-color: transparent;
+  background-color:transparent;
+  width: 315px;
+  height: 65px;
+  font-size: 27.1px;
+  position: absolute;
+  display: inline-block;
+}

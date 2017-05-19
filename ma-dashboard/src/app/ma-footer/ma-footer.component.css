@@ -1,0 +1,26 @@
+.ma-footer-inner-frame {
+  padding : 30px;
+}
+.ma-footer-list-div {
+  display : inline-block;
+}
+.ma-footer-company {
+  margin-left : 40px;
+  color : #808080;
+  font-weight: bold;
+}
+img {
+  width : 140px;
+  height: 70px;
+  vertical-align: middle;
+}
+ul {
+  display : inline-block;
+  list-style : none;
+}
+li {
+  font-size : 11px;
+  display : inline-block;
+  list-style : none;
+  margin-right : 30px;
+}
