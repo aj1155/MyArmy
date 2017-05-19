@@ -1,0 +1,114 @@
+
+/*우측 frame start*/
+  .ma-right-frame {
+    /*background-color: red;*/
+    position: absolute;
+    display: inline-block;
+    margin-top : 84px;
+    margin-left: 1566px;
+    width: 354px;
+    height: 995px;
+  }
+  .smart-matching-button {
+    margin : 22px 32px 900px 49px;
+    position: absolute;
+    display: inline-block;
+    width: 273px;
+    height: 74px;
+  }
+  .topics-frame {
+    display: inline-block;
+    position: absolute;
+    width:294px;
+    height: 596px;
+    margin-top : 379px;
+    /*background-color: blue;*/
+  }
+  .topics-text {
+    display: inline-block;
+    position: absolute;
+    margin-left : 60px;
+    margin-bottom : 40px;
+    font-family: NotoSansCJKkr;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  .topics-list-frame {
+    display: inline-block;
+    position: absolute;
+    width : 234px;
+    height: 546.8px;
+    margin-left : 60px;
+    margin-top : 49.2px;
+    font-size : 21.2px;
+  }
+  .ranking-box {
+    display: inline-block;
+    margin-top : 11.8px;
+  }
+
+/*우측 frame end*/
+
+/*회원가입 프레임 start*/
+  .regist-text-frame {
+    display: inline-block;
+  }
+  .top-dark-line {
+    position: absolute;
+    display : inline-block;
+    width: 10px;
+    height: 23px;
+    margin: 154px 1740px 903px 170px;
+  }
+  .regist-text-title {
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 26px;
+    font-family: NotoSansCJKkr;
+    font-weight: bold;
+    font-size: 27.1px;
+    line-height: 0.1;
+    letter-spacing: 1.1px;
+    margin: 165px 1629px 902px 193px;
+    color: #000000;
+    vertical-align: bottom;
+  }
+/*회원가입 프레임 end*/
+
+
+/*회원가입 icon frame start*/
+  .icon-frame {
+    display: inline-block;
+  }
+  .company-icon {
+    position: absolute;
+    width : 273px;
+    height: 267px;
+    margin : 326px 1281px 487px 366px
+  }
+  .person-icon {
+    position: absolute;
+    width: 210px;
+    height: 246px;
+    margin: 343px 621px 491px 1089px
+  }
+/*회원가입 icon frame end*/
+
+/*가입 button frame start*/
+  .join-button-frame {
+    display: inline-block;
+  }
+  .join-company-button {
+    position: absolute;
+    width: 436px;
+    height: 80px;
+    margin : 702px 1189px 298px 295px
+  }
+  .join-personal-button {
+    position: absolute;
+    width: 436px;
+    height: 80px;
+    margin: 702px 513px 298px 971px
+  }
+/*가입 button frame end*/
