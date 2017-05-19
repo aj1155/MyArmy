@@ -1,6 +1,7 @@
 package me.myarmy.api.service;
 
 import lombok.extern.slf4j.Slf4j;
+import me.myarmy.api.controller.model.response.CompanyResponse;
 import me.myarmy.api.domain.Company;
 import me.myarmy.api.domain.Resume;
 import me.myarmy.api.repository.CompanyRepository;
@@ -12,7 +13,10 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Created by Manki Kim on 2017-03-04.
@@ -42,41 +46,41 @@ public class CategoryService {
 
      /***** 전체 *****/
     @Cacheable(value="findJobAll", key="#all")
-    public List<Company> all(String all) {
-        return this.companyRepository.findAll();
+    public List<CompanyResponse> all(String all) {
+        return convertCompanyEntityToResponse(this.companyRepository.findAll());
     }
 
     /***** 지역별 *****/
     @Cacheable(value="findJobAreaCache", key="#area")
-    public List<Company> area(String area) {
-        return this.companyRepository.findByArea(area);
+    public List<CompanyResponse> area(String area) {
+        return convertCompanyEntityToResponse(this.companyRepository.findByArea(area));
     }
     /***** 학력 *****/
     @Cacheable(value="findJobGradeCache", key="#grade")
-    public List<Company> grade(String grade){
-        return this.companyRepository.findByGrade(grade);
+    public List<CompanyResponse> grade(String grade){
+        return convertCompanyEntityToResponse(this.companyRepository.findByGrade(grade));
     }
     /***** 경력 *****/
     @Cacheable(value="findJobExperienceCache", key="#experience")
-    public List<Company> experience(String experience){
-        return this.companyRepository.findByExperience(experience);
+    public List<CompanyResponse> experience(String experience){
+        return convertCompanyEntityToResponse(this.companyRepository.findByExperience(experience));
     }
     /***** 복지 *****/
     @Cacheable(value="findJobWelfareCache", key="#welfare")
-    public List<Company> welfare(String welfare){
-        return this.companyRepository.findByWelfare(welfare);
+    public List<CompanyResponse> welfare(String welfare){
+        return convertCompanyEntityToResponse(this.companyRepository.findByWelfare(welfare));
     }
 
     /***** 직종별 *****/
     @Cacheable(value="findJobOccupationCache", key="#occupation")
-    public List<Company> occupation(String occupation){
-        return this.companyRepository.findByOccupation(occupation);
+    public List<CompanyResponse> occupation(String occupation){
+        return convertCompanyEntityToResponse(this.companyRepository.findByOccupation(occupation));
     }
 
     /***** 작성일 최신순 *****/
     @Cacheable(value="findJopCreatedDateCache")
-    public List<Company> createdDate(){
-        return this.companyRepository.findByDateDesc();
+    public List<CompanyResponse> createdDate(){
+        return convertCompanyEntityToResponse(this.companyRepository.findByDateDesc());
     }
 
     /****스마트 매칭****/
@@ -91,5 +95,13 @@ public class CategoryService {
 
 
         return Arrays.asList(this.rootDataFrame.filter(cjhakryeok.contains(resume.getGrade())).filter(eopjongGbcdNm.contains(resume.getObjective())).filter(geunmujy.contains(resume.getAddress())).toJSON().collect());
+    }
+
+    private List<CompanyResponse> convertCompanyEntityToResponse(List<Company> companies){
+        List<CompanyResponse> companyResponses = Optional.ofNullable(companies).orElse(Collections.emptyList()).stream()
+                .map(company -> CompanyResponse.of(company))
+                .collect(Collectors.toList());
+
+        return companyResponses;
     }
 }

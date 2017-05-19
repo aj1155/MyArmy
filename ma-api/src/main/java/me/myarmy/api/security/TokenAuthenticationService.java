@@ -32,13 +32,18 @@ public class TokenAuthenticationService {
         response.addHeader(AUTH_HEADER_NAME,this.jwtTokenHandler.createTokenForUser(user));
     }
 
-    public Authentication generateAuthenticationFromRequest(HttpServletRequest request) throws UserNotFoundException{
-        final String token = request.getHeader(AUTH_HEADER_NAME);
-        if(token == null || token.isEmpty()) return null;
-        return this.jwtTokenHandler
-                .parseUserFromToken(token)
-                .map(UserAuthentication::new)
-                .orElse(null);
+    public Authentication generateAuthenticationFromRequest(HttpServletRequest request) {
+        try {
+            final String token = request.getHeader(AUTH_HEADER_NAME);
+            if(token == null || token.isEmpty()) return null;
+            return this.jwtTokenHandler
+                    .parseUserFromToken(token)
+                    .map(UserAuthentication::new)
+                    .orElse(null);
+        }catch(UserNotFoundException e) {
+            e.getMessage();
+        }
+        return null;
     }
 
 }

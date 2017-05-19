@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception,UserNotFoundException {
+    protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable();
 
         //h2 database console
@@ -70,7 +70,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().headers().cacheControl();
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/v1/category/**").hasRole("USER")
-                .antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/api/v1/users/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/api/v1/info/**").hasRole("USER")
                 .antMatchers(HttpMethod.GET, "/console/**").permitAll();
         http.addFilterBefore(corsFilter, ChannelProcessingFilter.class);
         http.addFilterBefore(

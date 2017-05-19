@@ -24,7 +24,7 @@ public class UserFavor extends BaseEntity implements Serializable {
     private Long id;
 
     @Column(name = "USER_ID")
-    private String userId;
+    private long userId;
 
     @Column(name = "COMPANY_ID")
     private int companyId;
@@ -41,7 +41,7 @@ public class UserFavor extends BaseEntity implements Serializable {
     @Column(name = "geunmujysido")
     private String geunmujysido;
 
-    public static UserFavor of(int companyId,String userId,String bokrihs,String cjhakryeok,String eopjonggbcdnm,String geunmujysido){
+    public static UserFavor of(int companyId,long userId,String bokrihs,String cjhakryeok,String eopjonggbcdnm,String geunmujysido){
         return UserFavor.builder()
                 .companyId(companyId)
                 .userId(userId)

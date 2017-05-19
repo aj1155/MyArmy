@@ -2,8 +2,8 @@ package me.myarmy.api.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import me.myarmy.api.controller.model.response.CompanyResponse;
 import me.myarmy.api.controller.model.response.MaApiResponse;
-import me.myarmy.api.domain.Company;
 import me.myarmy.api.service.CategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,57 +34,57 @@ public class CategoryController {
     /***** 전체 *****/
     @ApiOperation(value = "파라미터 없음", notes = "전체 리스트")
     @GetMapping("/all")
-    public MaApiResponse<List<Company>> disArea(){
+    public MaApiResponse<List<CompanyResponse>> disArea(){
 
-        List<Company> list = this.categoryService.all("all");
+        List<CompanyResponse> list = this.categoryService.all("all");
         return new MaApiResponse<>(list);
     }
 
     /***** 지역별 *****/
     @ApiOperation(value = "지역명", notes = "지역별 회사 리스트를 가져옵니다.")
     @GetMapping("/area/{area}")
-    public MaApiResponse<List<Company>> disArea(@PathVariable String area){
+    public MaApiResponse<List<CompanyResponse>> disArea(@PathVariable String area){
 
-        List<Company> list = this.categoryService.area(area);
+        List<CompanyResponse> list = this.categoryService.area(area);
         return new MaApiResponse<>(list);
     }
 
     /***** 학력 *****/
     @ApiOperation(value = "최종학력", notes = "학력별 회사 리스트를 가져옵니다.")
     @GetMapping("/grade/{grade}")
-    public MaApiResponse<List<Company>> disGrade(@PathVariable String grade){
-        List<Company> list = this.categoryService.grade(grade);
+    public MaApiResponse<List<CompanyResponse>> disGrade(@PathVariable String grade){
+        List<CompanyResponse> list = this.categoryService.grade(grade);
         return new MaApiResponse<>(list);
     }
 
     /***** 경력 *****/
     @ApiOperation(value = "경력명", notes = "경력별 회사 리스트를 가져옵니다.")
     @GetMapping("/experience/{experience}")
-    public MaApiResponse<List<Company>> disExp(@PathVariable String experience){
-        List<Company> list = this.categoryService.experience(experience);
+    public MaApiResponse<List<CompanyResponse>> disExp(@PathVariable String experience){
+        List<CompanyResponse> list = this.categoryService.experience(experience);
         return new MaApiResponse<>(list);
     }
 
     /***** 복지 *****/
     @ApiOperation(value = "복지명", notes = "해당 복지별 회사 리스트를 가져옵니다.")
     @GetMapping("/welfare/{welfare}")
-    public MaApiResponse<List<Company>> disWelfare(@PathVariable String welfare){
-        List<Company> list = this.categoryService.welfare(welfare);
+    public MaApiResponse<List<CompanyResponse>> disWelfare(@PathVariable String welfare){
+        List<CompanyResponse> list = this.categoryService.welfare(welfare);
         return new MaApiResponse<>(list);
     }
 
     /***** 직종 *****/
     @ApiOperation(value = "직종명", notes = "직종별 회사 리스트를 가져옵니다.")
     @GetMapping("/occupation/{occupation}")
-    public MaApiResponse<List<Company>> disOccupation(@PathVariable String occupation){
-        List<Company> list = this.categoryService.occupation(occupation);
+    public MaApiResponse<List<CompanyResponse>> disOccupation(@PathVariable String occupation){
+        List<CompanyResponse> list = this.categoryService.occupation(occupation);
         return new MaApiResponse<>(list);
     }
 
     @ApiOperation(value = "작성일", notes = "작성일 순서대로 회사 리스트를 가져옵니다.")
     @GetMapping("/createdDate")
-    public MaApiResponse<List<Company>> disCreatedDate(){
-        List<Company> list = this.categoryService.createdDate();
+    public MaApiResponse<List<CompanyResponse>> disCreatedDate(){
+        List<CompanyResponse> list = this.categoryService.createdDate();
         return new MaApiResponse<>(list);
     }
 

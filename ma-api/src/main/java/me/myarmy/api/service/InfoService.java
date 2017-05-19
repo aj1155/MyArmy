@@ -2,9 +2,11 @@ package me.myarmy.api.service;
 
 import me.myarmy.api.controller.exception.RestNotFoundTitleException;
 import me.myarmy.api.domain.Company;
+import me.myarmy.api.domain.User;
 import me.myarmy.api.domain.UserFavor;
 import me.myarmy.api.repository.CompanyRepository;
 import me.myarmy.api.repository.UserFavorRepository;
+import me.myarmy.api.repository.UserRepository;
 import org.apache.spark.sql.DataFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -29,6 +31,9 @@ public class InfoService {
     @Autowired
     private UserFavorRepository userFavorRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public String getThumbUrl(int id) throws RestNotFoundTitleException {
         return this.restService.getThumb(getHmpg(id));
     }
@@ -40,10 +45,16 @@ public class InfoService {
 
     public Company getCompanyDetails(int id) {
         Company company = this.companyRepository.findOne(id);
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUserName = authentication.getName();
-        UserFavor userFavor = UserFavor.of(company.getId(),currentUserName,company.getBokrihs(),company.getCjhakryeok(),company.getEopjongGbcdNm(),company.getGeunmujysido());
-        this.userFavorRepository.save(userFavor);
+        memorizeUserFavor(id);
         return company;
+    }
+
+    private void memorizeUserFavor(int companyId){
+        Company company = this.companyRepository.findOne(companyId);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        User user = this.userRepository.findByEmail(email);
+        UserFavor userFavor = UserFavor.of(company.getId(),user.getId(),company.getBokrihs(),company.getCjhakryeok(),company.getEopjongGbcdNm(),company.getGeunmujysido());
+        this.userFavorRepository.save(userFavor);
     }
 }

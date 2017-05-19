@@ -25,14 +25,14 @@ public class UserManageController {
 
     @ApiOperation(value = "유저정보값", notes = "일반 유저 회원 가입입니다.")
     @PostMapping()
-    public MaApiResponse create(@Valid @RequestBody UserRequest userRequest){
+    public MaApiResponse create(@Valid @RequestBody UserRequest userRequest) throws NotUniqueIdException{
         this.userService.createUser(userRequest);
         return new MaApiResponse(MaApiResponse.OK);
     }
 
     @ApiOperation(value = "기업인정보값", notes = "기업인 회원 가입입니다.")
     @PostMapping("/business")
-    public MaApiResponse createBusiness(@Valid @RequestBody UserRequest userRequest){
+    public MaApiResponse createBusiness(@Valid @RequestBody UserRequest userRequest) throws NotUniqueIdException {
         this.userService.createBusiness(userRequest);
         return new MaApiResponse(MaApiResponse.OK);
     }

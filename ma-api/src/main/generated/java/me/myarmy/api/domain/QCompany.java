@@ -29,6 +29,8 @@ public class QCompany extends EntityPathBase<Company> {
 
     public final StringPath cygonggoNo = createString("cygonggoNo");
 
+    public final StringPath cyjemoknm = createString("cyjemoknm");
+
     public final StringPath damdangjaFnm = createString("damdangjaFnm");
 
     public final StringPath ddeopmuNm = createString("ddeopmuNm");
