@@ -72,6 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/v1/category/**").hasRole("USER")
                 .antMatchers(HttpMethod.GET, "/api/v1/users/**").hasRole("USER")
                 .antMatchers(HttpMethod.GET, "/api/v1/info/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/api/v1/recommend/**").hasRole("USER")
                 .antMatchers(HttpMethod.GET, "/console/**").permitAll();
         http.addFilterBefore(corsFilter, ChannelProcessingFilter.class);
         http.addFilterBefore(
@@ -100,8 +101,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    ;
 
     @Bean
     public SecurityContextRepository securityContextRepository() {

@@ -1,5 +1,6 @@
 package me.myarmy.api.repository.Impl;
 
+import com.querydsl.core.BooleanBuilder;
 import me.myarmy.api.domain.Company;
 import me.myarmy.api.domain.QCompany;
 import me.myarmy.api.repository.custom.CompanyRepositoryCustom;
@@ -8,7 +9,7 @@ import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport
 import java.util.List;
 
 /**
- * Created by USER on 2017-05-17.
+ * Created by Manki Kim on 2017-05-17.
  */
 public class CompanyRepositoryImpl extends QueryDslRepositorySupport implements CompanyRepositoryCustom {
 
@@ -61,4 +62,16 @@ public class CompanyRepositoryImpl extends QueryDslRepositorySupport implements 
                 .orderBy(qCompany.ccdatabalsaengDtm.desc())
                 .fetch();
     }
+
+    @Override
+    public List<Company> smartMatch(String cjhakryeok, String eopjongGbcdNm, String geunmujy) {
+        BooleanBuilder whereClause = new BooleanBuilder();
+        whereClause.and(qCompany.cjhakryeok.contains(cjhakryeok));
+        whereClause.and(qCompany.eopjongGbcdNm.contains(eopjongGbcdNm));
+        whereClause.and(qCompany.geunmujy.contains(geunmujy));
+        return from(qCompany)
+                .where(whereClause)
+                .fetch();
+    }
+
 }

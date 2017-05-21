@@ -18,6 +18,8 @@ import java.io.Serializable;
 @Builder
 public class UserFavor extends BaseEntity implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
@@ -29,26 +31,23 @@ public class UserFavor extends BaseEntity implements Serializable {
     @Column(name = "COMPANY_ID")
     private int companyId;
 
-    @Column(name = "bokrihs")
-    private String bokrihs;
+    @Column(name = "RATING")
+    private int rating;
 
-    @Column(name = "cjhakryeok")
-    private String cjhakryeok;
-
-    @Column(name = "eopjonggbcdnm")
-    private String eopjonggbcdnm;
-
-    @Column(name = "geunmujysido")
-    private String geunmujysido;
-
-    public static UserFavor of(int companyId,long userId,String bokrihs,String cjhakryeok,String eopjonggbcdnm,String geunmujysido){
+    public static UserFavor of(int companyId,long userId,int rating){
         return UserFavor.builder()
                 .companyId(companyId)
                 .userId(userId)
-                .bokrihs(bokrihs)
-                .cjhakryeok(cjhakryeok)
-                .eopjonggbcdnm(eopjonggbcdnm)
-                .geunmujysido(geunmujysido)
+                .rating(rating)
+                .build();
+    }
+
+    public static UserFavor ofUpdate(long id,int companyId,long userId,int rating){
+        return UserFavor.builder()
+                .id(id)
+                .companyId(companyId)
+                .userId(userId)
+                .rating(rating)
                 .build();
     }
 }

@@ -5,6 +5,8 @@ spring.application.name: myarmy
 dashboard.url: http://127.0.0.1
 
 ---
+spark.datasource.url : jdbc:mysql://52.78.173.18/myarmy?user=myarmy&password=1234
+---
 
 spring.jpa:
   database: MYSQL
@@ -51,7 +53,7 @@ jwt.tokenheader: X-Auth-Token
 
 
 ---
-test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpd2J0YmdvdHdfQGdtYWlsLmNvbSIsImV4cCI6MTQ5NTYzMjUyMn0.DuYCh-DrwtyNHHGlqaj0j9op9k9tAb8Fg-xXsD2Nc1m0mqkQ0tyuo3yV7OnvCN4sOLoJm4EVUDYOizW-OPmhQA
+test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpd2J0YmdvdHdfQGdtYWlsLmNvbSIsImV4cCI6MTQ5NTk3NzI0N30.ki58_MZgfLZVjqKQUovqQxnQODuWXCRLC_fZTRZf5UgMMQZOTTOJeF36Z-OoMTc5WHTM3XKQvgMGwaRmrAsxew
 
 ---
 mail:

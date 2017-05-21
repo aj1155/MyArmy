@@ -89,9 +89,9 @@ public class CategoryController {
     }
 
     @GetMapping("/smartMatch/{uid:.+}")
-    public MaApiResponse<List<Object>> disSmartMatch(@PathVariable String uid){
+    public MaApiResponse<List<CompanyResponse>> disSmartMatch(@PathVariable String uid){
         logger.info("uid : ", uid);
-        List<Object> list = this.categoryService.smartMatch(uid);
+        List<CompanyResponse> list = this.categoryService.smartMatch(uid);
         return new MaApiResponse<>(list);
     }
 }

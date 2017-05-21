@@ -58,4 +58,15 @@ public class User extends BaseEntity implements Serializable {
                 .email(email)
                 .build();
     }
+
+    public static User ofUpdate(long id,String loginId,String password,String userName,String email){
+        return User.builder()
+                .id(id)
+                .loginId(loginId)
+                .password(password)
+                .userName(userName)
+                .email(email)
+                .build();
+    }
+
 }

@@ -6,13 +6,10 @@ import me.myarmy.api.domain.Company;
 import me.myarmy.api.domain.Resume;
 import me.myarmy.api.repository.CompanyRepository;
 import me.myarmy.api.repository.ResumeRepository;
-import org.apache.spark.sql.Column;
-import org.apache.spark.sql.DataFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -27,9 +24,10 @@ import java.util.stream.Collectors;
 public class CategoryService {
 
     /* xml 정보 */
+    /*
     @Autowired
     private DataFrame rootDataFrame;
-
+    */
     @Autowired
     private ResumeRepository resumeRepository;
 
@@ -84,17 +82,10 @@ public class CategoryService {
     }
 
     /****스마트 매칭****/
-    public List<Object> smartMatch(String uid){
-        log.debug(uid);
+    public List<CompanyResponse> smartMatch(String uid){
         Resume resume = this.resumeRepository.findByUid(uid);
-        log.debug(resume.getObjective());
-        log.debug(resume.getAddress());
-        Column cjhakryeok = this.rootDataFrame.col("cjhakryeok");
-        Column eopjongGbcdNm = this.rootDataFrame.col("eopjongGbcdNm");
-        Column geunmujy = this.rootDataFrame.col("geunmujy");
-
-
-        return Arrays.asList(this.rootDataFrame.filter(cjhakryeok.contains(resume.getGrade())).filter(eopjongGbcdNm.contains(resume.getObjective())).filter(geunmujy.contains(resume.getAddress())).toJSON().collect());
+        List<CompanyResponse> companyResponses = convertCompanyEntityToResponse(this.companyRepository.smartMatch(resume.getGrade(),resume.getObjective(),resume.getAddress()));
+        return companyResponses;
     }
 
     private List<CompanyResponse> convertCompanyEntityToResponse(List<Company> companies){
