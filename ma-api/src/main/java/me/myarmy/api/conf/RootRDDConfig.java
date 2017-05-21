@@ -18,13 +18,36 @@ public class RootRDDConfig {
     @Autowired
     private JavaSparkContext javaSparkContext;
 
+
     @Value("${input.file}")
     private String inputFile;
 
-    @Bean
-    public DataFrame rootDataFrame() {
-        SQLContext sql = new SQLContext(javaSparkContext);
+    @Value("${spark.datasource.url}")
+    private String url;
 
+    @Bean
+    public SQLContext sqlContext(){
+        SQLContext sql = new SQLContext(javaSparkContext);
+        return sql;
+    }
+
+    @Bean
+    public DataFrame userFavorFrame(SQLContext sql){
+        return sql.jdbc(url,"user_favor");
+    }
+
+    @Bean
+    public DataFrame userFrame(SQLContext sql){
+        return sql.jdbc(url,"user");
+    }
+
+    @Bean
+    public DataFrame companyFrame(SQLContext sql){
+        return sql.jdbc(url,"company");
+    }
+    /*
+    @Bean
+    public DataFrame rootDataFrame(SQLContext sql) {
         DataFrame data =
                 sql.read().
                         format("com.databricks.spark.xml")
@@ -32,5 +55,5 @@ public class RootRDDConfig {
                         .load(inputFile);
         return data;
     }
-
+    */
 }

@@ -1,41 +1,41 @@
 package me.myarmy.api.controller.model.response;
 
+import lombok.*;
+import me.myarmy.api.domain.Company;
+
 /**
  * Created by Manki Kim on 2017-03-04.
  * email : aj1155@naver.com
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class CompanyResponse {
 
-    private String bokrihs;
-    private String create_date;
-    private String last_modify_date;
-    private String hakryeok;
-    private String gonggoNo;
-    private String jemokNm;
-    private String damdangjaFnm;
+    private int id;
+    private String ccdatabalsaengdtm;
+    private String cjdatabyeongyeongdtm;
+    private String cjhakryeok;
     private String ddeopmuNm;
-    private String ddjyeonrakcheoNo;
-    private String dpyeonrakcheoNo;
     private String eopcheNm;
-    private String eopjongGbcd;
-    private String eopjongGbcdNm;
-    private String gmjybjusoCd;
-    private String gyeongryeokGbcdNm;
-    private String gyjogeonCd;
-    private String gyjogeonCdNm;
-    private String hmpgAddr;
-    private String jeopsubb;
-    private String jggyeyeolCd;
-    private String jggyeyeolCdNm;
     private String magamDt;
-    private String oegukeo;
-    private String oequkeoCd;
-    private String oqegsneungryeokCdNm;
-    private String sschaeyongYn;
-    private String yeokjongBrcd;
-    private String yeokjongBrcdNm;
-    private String yowonGbcd;
-    private String yowonGbcdNm;
-    private String yuhyoYn;
+    private String geunmujysido;
+    private String gyeongryeokGbcdNm;
+    private String gyjogeonCdNm;
 
+    public static CompanyResponse of(Company company){
+        return CompanyResponse.builder()
+                .cjhakryeok(company.getCjhakryeok())
+                .id(company.getId())
+                .ccdatabalsaengdtm(company.getCcdatabalsaengDtm())
+                .cjdatabyeongyeongdtm(company.getCjdatabyeongyeongDtm())
+                .ddeopmuNm(company.getDdeopmuNm())
+                .eopcheNm(company.getEopcheNm())
+                .magamDt(company.getMagamDt())
+                .geunmujysido(company.getGeunmujysido())
+                .gyeongryeokGbcdNm(company.getGyeongryeokGbcdNm())
+                .gyjogeonCdNm(company.getGyjogeonCdNm())
+                .build();
+    }
 }

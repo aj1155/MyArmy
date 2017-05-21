@@ -1,7 +1,7 @@
 package me.myarmy.service;
 
 import lombok.extern.slf4j.Slf4j;
-import me.myarmy.api.domain.Company;
+import me.myarmy.api.controller.model.response.CompanyResponse;
 import me.myarmy.api.service.CategoryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,31 +29,31 @@ public class CategoryServiceTest {
 
     @Test
     public void areaTest(){
-         List<Company> result = this.categoryService.area("서울");
+         List<CompanyResponse> result = this.categoryService.area("서울");
          assertThat(result).isNotNull();
     }
 
     @Test
     public void grade(){
-        List<Company> result = this.categoryService.grade("고등학교 졸업 ");
+        List<CompanyResponse> result = this.categoryService.grade("고등학교 졸업 ");
         assertThat(result).isNotNull();
     }
 
     @Test
     public void experience(){
-        List<Company> result = this.categoryService.experience("무관");
+        List<CompanyResponse> result = this.categoryService.experience("무관");
         assertThat(result).isNotNull();
     }
 
     @Test
     public void welfare(){
-        List<Company> result = this.categoryService.welfare("퇴직금");
+        List<CompanyResponse> result = this.categoryService.welfare("퇴직금");
         assertThat(result).isNotNull();
     }
 
     @Test
     public void occupation(){
-        List<Company> result = this.categoryService.occupation("철강");
+        List<CompanyResponse> result = this.categoryService.occupation("철강");
         assertThat(result).isNotNull();
     }
 }
