@@ -10,6 +10,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ResumeRepository extends JpaRepository<Resume, Long> {
-
-    Resume findByUserId(long id);
+    Resume findByUserId(long userId);
 }

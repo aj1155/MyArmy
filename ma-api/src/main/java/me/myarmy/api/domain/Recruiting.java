@@ -8,6 +8,7 @@ import java.io.Serializable;
 /**
  * Created by gain on 2017. 5. 4..
  */
+
 @Entity
 @Table(name = "RECRUITING")
 @Getter
