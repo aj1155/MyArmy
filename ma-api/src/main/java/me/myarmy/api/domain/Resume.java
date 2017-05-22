@@ -23,8 +23,8 @@ public class Resume extends BaseEntity implements Serializable {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "UID")
-    private String uid;
+    @Column(name = "user_id")
+    private long userId;
 
     @Column(name = "OBJECTIVE")
     private String objective;
@@ -44,9 +44,9 @@ public class Resume extends BaseEntity implements Serializable {
     @Column(name = "MISCELLANEOUS")
     private String miscellaneous;
 
-    public static Resume of(String uid, String objective, String specialty, String license, String grade, String address, String miscellaneous){
+    public static Resume of(long uid, String objective, String specialty, String license, String grade, String address, String miscellaneous){
         return Resume.builder()
-                .uid(uid)
+                .userId(uid)
                 .objective(objective)
                 .specialty(specialty)
                 .license(license)

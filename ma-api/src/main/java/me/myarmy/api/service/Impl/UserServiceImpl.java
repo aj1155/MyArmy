@@ -10,8 +10,10 @@ import me.myarmy.api.repository.UserRepository;
 import me.myarmy.api.service.custom.UserService;
 import me.myarmy.api.util.ROLEMANAGE;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -69,6 +71,14 @@ public class UserServiceImpl implements UserService {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getRole())));
         return authorities;
+    }
+
+    @Override
+    public long findCurrentUserId() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        User user = this.userRepository.findByEmail(email);
+        return user.getId();
     }
 
      /* 유효성 검사 */

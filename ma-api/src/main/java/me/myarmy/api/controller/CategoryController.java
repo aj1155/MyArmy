@@ -2,6 +2,7 @@ package me.myarmy.api.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import me.myarmy.api.controller.exception.ResumeNotFoundException;
 import me.myarmy.api.controller.model.response.CompanyResponse;
 import me.myarmy.api.controller.model.response.MaApiResponse;
 import me.myarmy.api.service.CategoryService;
@@ -9,10 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -88,10 +86,15 @@ public class CategoryController {
         return new MaApiResponse<>(list);
     }
 
-    @GetMapping("/smartMatch/{uid:.+}")
-    public MaApiResponse<List<CompanyResponse>> disSmartMatch(@PathVariable String uid){
-        logger.info("uid : ", uid);
-        List<CompanyResponse> list = this.categoryService.smartMatch(uid);
+    @ApiOperation(value = "없음", notes = "세션에 저장된 본인 id로 검색됩니다")
+    @GetMapping("/smartMatch")
+    public MaApiResponse<List<CompanyResponse>> disSmartMatch() throws ResumeNotFoundException{
+        List<CompanyResponse> list = this.categoryService.smartMatch();
         return new MaApiResponse<>(list);
+    }
+
+    @ExceptionHandler(ResumeNotFoundException.class)
+    public MaApiResponse handleUserNotFound(ResumeNotFoundException exc) {
+        return new MaApiResponse(MaApiResponse.NOT_FOUND,"이력서를 먼저 등록해주세요");
     }
 }

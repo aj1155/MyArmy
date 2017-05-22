@@ -1,11 +1,13 @@
 package me.myarmy.api.service;
 
 import lombok.extern.slf4j.Slf4j;
+import me.myarmy.api.controller.exception.ResumeNotFoundException;
 import me.myarmy.api.controller.model.response.CompanyResponse;
 import me.myarmy.api.domain.Company;
 import me.myarmy.api.domain.Resume;
 import me.myarmy.api.repository.CompanyRepository;
 import me.myarmy.api.repository.ResumeRepository;
+import me.myarmy.api.service.custom.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,9 @@ public class CategoryService {
 
     @Autowired
     private CompanyRepository companyRepository;
+
+    @Autowired
+    private UserService userService;
 
     /*
     @Cacheable(value="findJobAll", key="#all")
@@ -82,8 +87,12 @@ public class CategoryService {
     }
 
     /****스마트 매칭****/
-    public List<CompanyResponse> smartMatch(String uid){
-        Resume resume = this.resumeRepository.findByUid(uid);
+    public List<CompanyResponse> smartMatch() throws ResumeNotFoundException{
+        Optional<Resume> resumeOptional = Optional.ofNullable(this.resumeRepository.findByUserId(this.userService.findCurrentUserId()));
+        if(!resumeOptional.isPresent()){
+            throw new ResumeNotFoundException("이력서를 먼저 등록해주세요");
+        }
+        Resume resume = resumeOptional.get();
         List<CompanyResponse> companyResponses = convertCompanyEntityToResponse(this.companyRepository.smartMatch(resume.getGrade(),resume.getObjective(),resume.getAddress()));
         return companyResponses;
     }
