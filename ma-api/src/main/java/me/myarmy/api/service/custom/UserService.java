@@ -15,4 +15,5 @@ public interface UserService {
     public void createUser(UserRequest userRequest);
     public void createBusiness(UserRequest userRequest);
     public Collection<GrantedAuthority> getAuthorities(String email);
+    public long findCurrentUserId();
 }

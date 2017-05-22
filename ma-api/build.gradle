@@ -57,6 +57,7 @@ dependencies {
 	compile group: 'org.apache.hadoop', name : 'hadoop-mapreduce-client-jobclient',version: '2.7.3'
 
 
+	compile("org.springframework.boot:spring-boot-starter-batch")
 	compile('org.openscience.cdk:cdk-fingerprint:1.5.10')
 	compile('org.scala-lang:scala-library:2.10.5')
 	compile('org.apache.spark:spark-core_2.10:1.6.3')
