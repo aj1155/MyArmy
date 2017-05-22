@@ -87,14 +87,16 @@ public class CategoryService {
     }
 
     /****스마트 매칭****/
-    public List<CompanyResponse> smartMatch() throws ResumeNotFoundException{
+    public List<CompanyResponse> smartMatch() throws ResumeNotFoundException {
         Optional<Resume> resumeOptional = Optional.ofNullable(this.resumeRepository.findByUserId(this.userService.findCurrentUserId()));
         if(!resumeOptional.isPresent()){
             throw new ResumeNotFoundException("이력서를 먼저 등록해주세요");
+
+        }else{
+            Resume resume = resumeOptional.get();
+            List<CompanyResponse> companyResponses = convertCompanyEntityToResponse(this.companyRepository.smartMatch(resume.getGrade(),resume.getObjective(),resume.getAddress()));
+            return companyResponses;
         }
-        Resume resume = resumeOptional.get();
-        List<CompanyResponse> companyResponses = convertCompanyEntityToResponse(this.companyRepository.smartMatch(resume.getGrade(),resume.getObjective(),resume.getAddress()));
-        return companyResponses;
     }
 
     private List<CompanyResponse> convertCompanyEntityToResponse(List<Company> companies){
