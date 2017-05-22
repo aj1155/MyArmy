@@ -38,7 +38,7 @@ public class ResumeControllerTest {
     @Test
     public void testCreateResume() throws Exception{
         ResumeRequest resumeRequest = new ResumeRequest();
-        resumeRequest.setUid("dlrkdls91@naver.com");
+        resumeRequest.setUid(1);
         resumeRequest.setGrade("대졸");
         resumeRequest.setObjective("철강");
         resumeRequest.setLicense("컴퓨터활용능력 1급");

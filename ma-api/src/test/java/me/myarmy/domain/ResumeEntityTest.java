@@ -35,11 +35,11 @@ public class ResumeEntityTest {
 
     @Test
     public void resumeTest(){
-        Resume createResume = Resume.of("dlrkdls91@naver.com", "철강", "영어", "컴퓨터활용능력 1급", "대졸", "서울시 종로구 홍지동", "기타경력사항");
+        Resume createResume = Resume.of(1, "철강", "영어", "컴퓨터활용능력 1급", "대졸", "서울시 종로구 홍지동", "기타경력사항");
         this.entityManager.persist(createResume);
-        Resume findResume = this.resumeRepository.findByUid("dlrkdls91@naver.com");
+        Resume findResume = this.resumeRepository.findByUserId(1);
 
-        Assert.assertEquals(createResume.getUid(), findResume.getUid());
+        Assert.assertEquals(createResume.getUserId(), findResume.getUserId());
         Assert.assertEquals(createResume.getObjective(), findResume.getObjective());
         Assert.assertEquals(createResume.getSpecialty(), findResume.getSpecialty());
         Assert.assertEquals(createResume.getLicense(), findResume.getLicense());

@@ -41,7 +41,7 @@ public class QResume extends EntityPathBase<Resume> {
 
     public final StringPath specialty = createString("specialty");
 
-    public final StringPath uid = createString("uid");
+    public final NumberPath<Long> userId = createNumber("userId", Long.class);
 
     public QResume(String variable) {
         super(Resume.class, forVariable(variable));

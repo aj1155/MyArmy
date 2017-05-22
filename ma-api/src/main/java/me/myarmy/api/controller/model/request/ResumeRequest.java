@@ -10,15 +10,14 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by gain on 2017. 5. 6..
  */
-@ApiModel(value="ResumeRequest",description = "resyme Request 정보")
+@ApiModel(value="ResumeRequest",description = "resume Request 정보")
 @Data
 @NoArgsConstructor
 public class ResumeRequest {
     private Long id;
 
-    @ApiModelProperty(value = "userId(email) 필수")
-    @NotNull
-    private String uid;
+    @ApiModelProperty(value = "해당 유저 id")
+    private long uid;
 
     @ApiModelProperty(value = "희망직종(필수)")
     @NotNull
