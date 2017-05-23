@@ -25,7 +25,7 @@ public class ResumeController {
 
     @ApiOperation(value = "생성", notes = "유저 이력서를 등록합니다.")
     @RequestMapping(method = RequestMethod.POST)
-    public MaApiResponse createResume(@Valid @RequestBody ResumeRequest resumeRequest){
+    public MaApiResponse createResume(@Valid @RequestBody ResumeRequest resumeRequest) throws Exception{
         this.resumeService.createResume(resumeRequest);
         return new MaApiResponse(MaApiResponse.OK);
     }
@@ -38,9 +38,15 @@ public class ResumeController {
     }
 
     @ApiOperation(value = "수정", notes = "유저 이력서를 수정합니다.")
-    @RequestMapping(value = "/update")
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public MaApiResponse updateResume(@Valid @RequestBody ResumeRequest resumeRequest){
         this.resumeService.updateResume(resumeRequest);
+        return new MaApiResponse(MaApiResponse.OK);
+    }
+
+    @RequestMapping(value = "/delete")
+    public MaApiResponse deleteResume() throws ResumeNotFoundException{
+        this.resumeService.deleteResume();
         return new MaApiResponse(MaApiResponse.OK);
     }
 
@@ -48,5 +54,4 @@ public class ResumeController {
     public MaApiResponse handleResumeNotFound(ResumeNotFoundException exc) {
         return new MaApiResponse(MaApiResponse.NOT_FOUND,"이력서를 등록해주세요");
     }
-
 }
