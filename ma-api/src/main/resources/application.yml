@@ -66,3 +66,7 @@ mail:
   smtp:
     start-tls-enable: true
     auth: true
+
+---
+#spring.data.elasticsearch.cluster-nodes : localhost:9300
+#spring.data.elasticsearch.properties.transport.tcp.connect_timeout : 120s

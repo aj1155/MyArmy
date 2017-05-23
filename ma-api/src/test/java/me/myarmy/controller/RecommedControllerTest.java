@@ -41,7 +41,7 @@ public class RecommedControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.code", is(200)))
                 .andReturn();
-
+        System.out.println(result.getResponse().getContentAsString());
         log.debug("{}", result.getResponse().getContentAsString());
     }
 }
