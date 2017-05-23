@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import me.myarmy.api.controller.model.request.RecruitingRequest;
 import me.myarmy.api.controller.model.response.MaApiResponse;
+import me.myarmy.api.domain.Recruiting;
 import me.myarmy.api.service.custom.RecruitingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
