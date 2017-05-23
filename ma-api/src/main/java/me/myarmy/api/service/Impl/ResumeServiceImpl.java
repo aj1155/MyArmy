@@ -27,7 +27,11 @@ public class ResumeServiceImpl implements ResumeService {
     private UserService userService;
 
     @Override
-    public void createResume(ResumeRequest resumeRequest){
+    public void createResume(ResumeRequest resumeRequest) throws Exception {
+        Optional<Resume> resumeExist = Optional.ofNullable(this.resumeRepository.findByUserId(this.userService.findCurrentUserId()));
+        if(resumeExist.isPresent()){
+            throw new Exception("이미 등록된 이력서가 있습니다.");
+        }
         Resume resume = Resume.of(this.userService.findCurrentUserId(), resumeRequest.getObjective(), resumeRequest.getSpecialty(), resumeRequest.getLicense(),
                 resumeRequest.getGrade(), resumeRequest.getAddress(), resumeRequest.getMiscellaneous());
         this.resumeRepository.save(resume);
@@ -59,5 +63,15 @@ public class ResumeServiceImpl implements ResumeService {
         resume.setCreatedDate(resumeTmp.getCreatedDate());
         resume.setLastModifiedDate(resumeTmp.getLastModifiedDate());
         this.resumeRepository.save(resume);
+    }
+
+    @Override
+    public void deleteResume() throws ResumeNotFoundException{
+        Optional<Resume> resumeOptional = Optional.ofNullable(this.resumeRepository.findByUserId(this.userService.findCurrentUserId()));
+        if(!resumeOptional.isPresent()){
+            throw new ResumeNotFoundException("이력서를 찾을 수 없습니다");
+        }
+        Resume resume = resumeOptional.get();
+        this.resumeRepository.delete(resume.getId());
     }
 }
