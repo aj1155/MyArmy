@@ -91,7 +91,6 @@ public class CategoryService {
         Optional<Resume> resumeOptional = Optional.ofNullable(this.resumeRepository.findByUserId(this.userService.findCurrentUserId()));
         if(!resumeOptional.isPresent()){
             throw new ResumeNotFoundException("이력서를 먼저 등록해주세요");
-
         }else{
             Resume resume = resumeOptional.get();
             List<CompanyResponse> companyResponses = convertCompanyEntityToResponse(this.companyRepository.smartMatch(resume.getGrade(),resume.getObjective(),resume.getAddress()));
