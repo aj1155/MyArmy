@@ -15,7 +15,6 @@ public class CompanyRepositoryImpl extends QueryDslRepositorySupport implements 
 
     QCompany qCompany = QCompany.company;
 
-
     public CompanyRepositoryImpl(){
         super(Company.class);
     }
@@ -69,6 +68,19 @@ public class CompanyRepositoryImpl extends QueryDslRepositorySupport implements 
         whereClause.and(qCompany.cjhakryeok.contains(cjhakryeok));
         whereClause.and(qCompany.eopjongGbcdNm.contains(eopjongGbcdNm));
         whereClause.and(qCompany.geunmujy.contains(geunmujy));
+        return from(qCompany)
+                .where(whereClause)
+                .fetch();
+    }
+
+    @Override
+    public List<Company> findAllContents(String text) {
+        BooleanBuilder whereClause = new BooleanBuilder();
+        whereClause.or(qCompany.cjhakryeok.contains(text));
+        whereClause.or(qCompany.eopjongGbcdNm.contains(text));
+        whereClause.or(qCompany.geunmujy.contains(text));
+        whereClause.or(qCompany.bokrihs.contains(text));
+        whereClause.or(qCompany.cyjemoknm.contains(text));
         return from(qCompany)
                 .where(whereClause)
                 .fetch();

@@ -4,7 +4,7 @@ MyArmy
 <http://myarmy.me>  
 
 > 현재 개발중으로 데이터는 정기적으로 초기화됩니다.  
-> 정식 오픈 예정일 : 2016년 5월 1일
+> 정식 오픈 예정일 : 2017년 5월 1일
 
 ### MyArmy?
 병역특례 산업체 지원자를 위한 서비스 입니다
@@ -15,10 +15,8 @@ MyArmy
 
 
 ### 사용법
-작성중 ...
+MYARMY Application 이용
 
-### API 사용하기
-작성중 ...
 
 ### 사용 기술 및 구조
 작성중...
@@ -28,3 +26,5 @@ MyArmy
 - Spring Boot
 - Angular2
 - JPA
+- AWS CE2
+- JENKINS

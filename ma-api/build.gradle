@@ -87,6 +87,7 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring4
 	compile group: 'org.thymeleaf', name: 'thymeleaf-spring4', version: '3.0.3.RELEASE'
 
+
 	/* swagger */
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.4.0'
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.4.0'

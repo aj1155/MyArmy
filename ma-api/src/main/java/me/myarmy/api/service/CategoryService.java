@@ -45,12 +45,17 @@ public class CategoryService {
         Column geunmujy = this.rootDataFrame.col("geunmujy");
         return Arrays.asList(this.rootDataFrame.filter(geunmujy.contains(area)).distinct().toJSON().collect());
     }
-    /*
+    */
 
      /***** 전체 *****/
-    @Cacheable(value="findJobAll", key="#all")
-    public List<CompanyResponse> all(String all) {
+    @Cacheable(value="findAll")
+    public List<CompanyResponse> all() {
         return convertCompanyEntityToResponse(this.companyRepository.findAll());
+    }
+
+    /***** 전체 *****/
+    public List<CompanyResponse> allByText(String text) {
+        return convertCompanyEntityToResponse(this.companyRepository.findAllContents(text));
     }
 
     /***** 지역별 *****/

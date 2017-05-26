@@ -19,6 +19,7 @@ import org.apache.spark.sql.types.StructType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -139,8 +140,11 @@ public class RecommendServiceImpl implements RecommendService{
 
         ALS als = new ALS();
         MatrixFactorizationModel model = als.setRank(20).setIterations(10).run(trainingRatingRDD);
-        Optional<Rating[]> optionalRating = Optional.ofNullable(model.recommendProducts((int) userId, 4));
-        if(!optionalRating.isPresent()){
+        System.out.println("아이디"+userId);
+        Optional<Rating[]> optionalRating;
+        try{
+            optionalRating = Optional.ofNullable(model.recommendProducts((int) userId, 4));
+        }catch(NoSuchElementException e){
             return;
         }
         Rating[] recommendeds = optionalRating.get();

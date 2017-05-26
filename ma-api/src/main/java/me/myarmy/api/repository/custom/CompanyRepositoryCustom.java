@@ -16,4 +16,5 @@ public interface CompanyRepositoryCustom {
     List<Company> findByOccupation(String occupation);
     List<Company> findByDateDesc();
     List<Company> smartMatch(String cjhakryeok,String eopjongGbcdNm,String geunmujy);
+    List<Company> findAllContents(String text);
 }
