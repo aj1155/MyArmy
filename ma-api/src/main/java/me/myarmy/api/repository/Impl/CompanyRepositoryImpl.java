@@ -4,15 +4,9 @@ import com.querydsl.core.BooleanBuilder;
 import me.myarmy.api.domain.Company;
 import me.myarmy.api.domain.QCompany;
 import me.myarmy.api.repository.custom.CompanyRepositoryCustom;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
 
 import java.util.List;
-
-import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 /**
  * Created by Manki Kim on 2017-05-17.
@@ -21,19 +15,10 @@ public class CompanyRepositoryImpl extends QueryDslRepositorySupport implements 
 
     QCompany qCompany = QCompany.company;
 
-    @Autowired
-    ElasticsearchTemplate elasticsearchTemplate;
-
     public CompanyRepositoryImpl(){
         super(Company.class);
     }
 
-
-    @Override
-    public List<Company> findAll() {
-        return from(qCompany)
-                .fetch();
-    }
 
     @Override
     public List<Company> findByWelfare(String welfare) {
@@ -90,9 +75,15 @@ public class CompanyRepositoryImpl extends QueryDslRepositorySupport implements 
 
     @Override
     public List<Company> findAllContents(String text) {
-        SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(queryStringQuery("*"+text+"*")).build();
-        List<Company> accounts = this.elasticsearchTemplate.queryForList(searchQuery, Company.class);
-        return accounts;
+        BooleanBuilder whereClause = new BooleanBuilder();
+        whereClause.or(qCompany.cjhakryeok.contains(text));
+        whereClause.or(qCompany.eopjongGbcdNm.contains(text));
+        whereClause.or(qCompany.geunmujy.contains(text));
+        whereClause.or(qCompany.bokrihs.contains(text));
+        whereClause.or(qCompany.cyjemoknm.contains(text));
+        return from(qCompany)
+                .where(whereClause)
+                .fetch();
     }
 
 }

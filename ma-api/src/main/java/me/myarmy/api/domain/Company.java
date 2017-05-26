@@ -1,7 +1,6 @@
 package me.myarmy.api.domain;
 
 import lombok.*;
-import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,7 +10,6 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "company")
-@Document(indexName="company",type="company")
 @Getter
 @Setter
 @ToString

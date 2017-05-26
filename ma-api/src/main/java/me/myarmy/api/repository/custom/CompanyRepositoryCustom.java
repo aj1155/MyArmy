@@ -9,7 +9,6 @@ import java.util.List;
  */
 public interface CompanyRepositoryCustom {
 
-    List<Company> findAll();
     List<Company> findByWelfare(String welfare);
     List<Company> findByArea(String area);
     List<Company> findByGrade(String grade);

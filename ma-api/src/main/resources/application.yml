@@ -53,7 +53,7 @@ jwt.tokenheader: X-Auth-Token
 
 
 ---
-test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpd2J0YmdvdHdfQGdtYWlsLmNvbSIsImV4cCI6MTQ5NTk3NzI0N30.ki58_MZgfLZVjqKQUovqQxnQODuWXCRLC_fZTRZf5UgMMQZOTTOJeF36Z-OoMTc5WHTM3XKQvgMGwaRmrAsxew
+test.token : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhajExNTVAbmF2ZXIuY29tIiwiZXhwIjoxNDk2MTIxNjU5fQ.vK8tITxDUV2z7dBQMEoeBt_Cimd_8gw8LRe8Cy8e1xbd1o0VenPoQBrwYGg3HG_qZ9j2ZFDOY1e_KBaEg1p1Ng
 
 ---
 mail:

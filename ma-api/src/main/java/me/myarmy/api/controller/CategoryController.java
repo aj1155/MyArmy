@@ -30,11 +30,21 @@ public class CategoryController {
     private CategoryService categoryService;
 
     /***** 전체 *****/
-    @ApiOperation(value = "파라미터 없음", notes = "전체 리스트")
-    @GetMapping("/all")
-    public MaApiResponse<List<CompanyResponse>> disArea(){
+    /*
+    @ApiOperation(value = "없음", notes = "전체 리스트")
+    @GetMapping()
+    public MaApiResponse<List<CompanyResponse>> findAll(){
 
-        List<CompanyResponse> list = this.categoryService.all("all");
+        List<CompanyResponse> list = this.categoryService.all();
+        return new MaApiResponse<>(list);
+    }
+    */
+    /***** 전체 *****/
+    @ApiOperation(value = "검색 텍스트", notes = "전체 리스트")
+    @GetMapping("/all/{text}")
+    public MaApiResponse<List<CompanyResponse>> findAllText(@PathVariable String text){
+
+        List<CompanyResponse> list = this.categoryService.allByText(text);
         return new MaApiResponse<>(list);
     }
 

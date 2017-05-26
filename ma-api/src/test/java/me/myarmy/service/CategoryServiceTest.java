@@ -28,6 +28,13 @@ public class CategoryServiceTest {
     private CategoryService categoryService;
 
     @Test
+    public void areaAll(){
+        List<CompanyResponse> result = this.categoryService.all();
+        result.forEach(System.out::println);
+        //assertThat(result).isNotNull();
+    }
+
+    @Test
     public void areaTest(){
          List<CompanyResponse> result = this.categoryService.area("서울");
          assertThat(result).isNotNull();

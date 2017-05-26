@@ -4,12 +4,12 @@
          updateCheck="false">
     <diskStore path="java.io.tmpdir" />
 
-    <cache name="findJobAll"
+    <cache name="findAll"
            maxEntriesLocalHeap="10000"
            maxEntriesLocalDisk="1000"
            eternal="false"
            diskSpoolBufferSizeMB="20"
-           timeToIdleSeconds="1000" timeToLiveSeconds="6000"
+           timeToIdleSeconds="1000" timeToLiveSeconds="3000"
            memoryStoreEvictionPolicy="LFU"
            transactionalMode="off">
         <persistence strategy="localTempSwap" />
@@ -20,7 +20,7 @@
            maxEntriesLocalDisk="1000"
            eternal="false"
            diskSpoolBufferSizeMB="20"
-           timeToIdleSeconds="1000" timeToLiveSeconds="6000"
+           timeToIdleSeconds="1000" timeToLiveSeconds="3000"
            memoryStoreEvictionPolicy="LFU"
            transactionalMode="off">
         <persistence strategy="localTempSwap" />
@@ -31,7 +31,7 @@
            maxEntriesLocalDisk="1000"
            eternal="false"
            diskSpoolBufferSizeMB="20"
-           timeToIdleSeconds="1000" timeToLiveSeconds="6000"
+           timeToIdleSeconds="1000" timeToLiveSeconds="3000"
            memoryStoreEvictionPolicy="LFU"
            transactionalMode="off">
         <persistence strategy="localTempSwap" />
@@ -42,7 +42,7 @@
            maxEntriesLocalDisk="1000"
            eternal="false"
            diskSpoolBufferSizeMB="20"
-           timeToIdleSeconds="1000" timeToLiveSeconds="6000"
+           timeToIdleSeconds="1000" timeToLiveSeconds="3000"
            memoryStoreEvictionPolicy="LFU"
            transactionalMode="off">
         <persistence strategy="localTempSwap" />
@@ -53,7 +53,7 @@
            maxEntriesLocalDisk="1000"
            eternal="false"
            diskSpoolBufferSizeMB="20"
-           timeToIdleSeconds="1000" timeToLiveSeconds="6000"
+           timeToIdleSeconds="1000" timeToLiveSeconds="3000"
            memoryStoreEvictionPolicy="LFU"
            transactionalMode="off">
         <persistence strategy="localTempSwap" />
@@ -64,7 +64,7 @@
            maxEntriesLocalDisk="1000"
            eternal="false"
            diskSpoolBufferSizeMB="20"
-           timeToIdleSeconds="1000" timeToLiveSeconds="6000"
+           timeToIdleSeconds="1000" timeToLiveSeconds="3000"
            memoryStoreEvictionPolicy="LFU"
            transactionalMode="off">
         <persistence strategy="localTempSwap" />
@@ -75,7 +75,7 @@
            maxEntriesLocalDisk="1000"
            eternal="false"
            diskSpoolBufferSizeMB="20"
-           timeToIdleSeconds="1000" timeToLiveSeconds="6000"
+           timeToIdleSeconds="1000" timeToLiveSeconds="3000"
            memoryStoreEvictionPolicy="LFU"
            transactionalMode="off">
         <persistence strategy="localTempSwap" />

@@ -3,13 +3,11 @@ package me.myarmy.api.service;
 import me.myarmy.api.controller.model.response.CompanyResponse;
 import me.myarmy.api.domain.Company;
 import me.myarmy.api.domain.Predict;
-import me.myarmy.api.domain.User;
 import me.myarmy.api.repository.CompanyRepository;
 import me.myarmy.api.repository.PredictRepository;
 import me.myarmy.api.repository.UserRepository;
+import me.myarmy.api.service.custom.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -33,16 +31,16 @@ public class PredictionService {
     @Autowired
     private CompanyRepository companyRepository;
 
+    @Autowired
+    private UserService userService;
     public List<CompanyResponse> predictCompany(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        User user = this.userRepository.findByEmail(email);
-        Optional<Predict> predict = Optional.ofNullable(this.predictRepository.findByUserId(user.getId()));
+        long userId = this.userService.findCurrentUserId();
+        Optional<Predict> predict = Optional.ofNullable(this.predictRepository.findByUserId(userId));
         if(!predict.isPresent()) return null;
         Predict isPredict = predict.get();
         String[] companys = isPredict.getCompanyIdText().split(",");
         List<Company> companies = new ArrayList<>();
-        for(String cp : companys){
+        for(String cp : companys) {
             companies.add(this.companyRepository.findOne(Integer.parseInt(cp)));
         }
         return convertCompanyEntityToResponse(companies);
